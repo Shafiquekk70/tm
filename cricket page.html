@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Excellence | Horizontal Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #020406;
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- Full Width Professional Header --- */
+        .premium-hero {
+            height: 60vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.2)), 
+                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald';
+            font-size: 6rem;
+            color: #ffcc00;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* --- Horizontal Main Container --- */
+        .main-wrapper {
+            padding: 80px 5%;
+            background: radial-gradient(circle at top right, #0a0c10, #020406);
+        }
+
+        .horizontal-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            margin-bottom: 100px;
+        }
+
+        /* About Text Styling */
+        .content-block {
+            flex: 1;
+        }
+
+        .tagline {
+            color: #ffcc00;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .editorial-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #bbb;
+            text-align: justify;
+        }
+
+        /* --- Integrated Player Side-Panel --- */
+        .player-horizontal-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.1);
+            border-radius: 40px;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .player-img {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            filter: grayscale(20%);
+            border: 1px solid #ffcc00;
+        }
+
+        .player-info h2 {
+            font-family: 'Oswald';
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 204, 0, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 204, 0, 0.1);
+        }
+
+        .stat-box .num {
+            display: block;
+            font-family: 'Oswald';
+            font-size: 1.4rem;
+            color: #ffcc00;
+        }
+
+        .stat-box .lab {
+            font-size: 0.7rem;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 992px) {
+            .horizontal-section { flex-direction: column; }
+            .player-horizontal-card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="premium-hero">
+        <div class="hero-content">
+            <span class="tagline">The Digital Archive</span>
+            <h1>PITCH<br>PERFECT</h1>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="horizontal-section">
+            
+            <div class="content-block">
+                <span class="tagline">01. Evolution of the Game</span>
+                <div class="editorial-text">
+                    <p>Football is a symphony of motion, played on a stage that spans 110 meters of hallowed turf. It is a game defined by 17 laws but governed by millions of hearts. Since its inception, the sport has evolved from a disorganized pastime into a multibillion-dollar industry where science meets soul.</p>
+                    
+                    <p>The tactical depth of modern football is staggering. Coaches now use heat maps and AI to track every blade of grass covered by a player. From the 'Total Football' of the 70s to the 'Gegenpressing' of the modern era, the objective remains the same: to find space where none exists. It is a game that rewards patience as much as it rewards pace.</p>
+
+                    <p>But beyond the numbers, it is the <strong>human element</strong> that makes it "The Beautiful Game." The way a stadium holds its breath during a penalty, or the collective roar of 80,000 people when the net ripples. It is a universal language that needs no translation, uniting continents under a single flag of sportsmanship.</p>
+                </div>
+            </div>
+
+            <div class="player-horizontal-card">
+                <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?auto=format&fit=crop&q=80&w=500" alt="Lionel Messi" class="player-img">
+                
+                <div class="player-info">
+                    <span class="tagline" style="margin-bottom: 5px; font-size: 0.6rem;">Master of the Pitch</span>
+                    <h2>LIONEL MESSI</h2>
+                    <p class="small text-muted">The definitive icon of footballing excellence and precision.</p>
+                    
+                    <div class="stat-row">
+                        <div class="stat-box">
+                            <span class="num">08</span>
+                            <span class="lab">Ballon d'Or</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="num">830+</span>
+                            <span class="lab">Total Goals</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="num">44</span>
+                            <span class="lab">Trophies</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="num">2022</span>
+                            <span class="lab">World Cup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 SportsInfo Pro | Premium Editorial Design</p>
+    </footer>
+
+</body>
+</html>
