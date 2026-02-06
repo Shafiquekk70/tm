@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rugby | SportsInfo Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========== BASIC STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+        
+        /* Background Effects */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(46, 204, 113, 0.15);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        /* ========== NAVIGATION ========== */
+        .main-nav {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-highlight {
+            color: #2ecc71;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #2ecc71;
+        }
+        
+        .nav-link.active {
+            color: #2ecc71;
+        }
+        
+        /* ========== MAIN CONTAINER ========== */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto 50px;
+        }
+        
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #2ecc71, #1abc9c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(46, 204, 113, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #2ecc71;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            color: #2ecc71;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        
+        /* ========== CONTENT CARDS ========== */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .content-card:hover {
+            border-color: #2ecc71;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+        }
+        
+        .section-title {
+            color: #2ecc71;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        /* ========== TWO COLUMN LAYOUT ========== */
+        .two-column {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        /* ========== FEATURE BOX ========== */
+        .feature-box {
+            background: rgba(46, 204, 113, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .feature-title {
+            color: #2ecc71;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* ========== FACT BOX ========== */
+        .fact-box {
+            background: linear-gradient(135deg, rgba(46,204,113,0.1), rgba(52,152,219,0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        
+        /* ========== PLAYER GALLERY ========== */
+        .player-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .player-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .player-card:hover {
+            border-color: #2ecc71;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.3);
+        }
+        
+        .player-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .player-name {
+            color: #2ecc71;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .player-country {
+            color: #aaaaaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .player-position {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        /* ========== STATISTICS TABLE ========== */
+        .stats-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .stats-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .stats-table th {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stats-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .stats-table tr:hover {
+            background: rgba(46, 204, 113, 0.05);
+        }
+        
+        /* ========== COUNTRIES GRID ========== */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .country-item {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .country-item:hover {
+            background: rgba(46, 204, 113, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* ========== INFO ITEMS ========== */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 10px;
+            margin-right: 15px;
+            color: #2ecc71;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            color: #2ecc71;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-container {
+            width: 100%;
+            max-width: 800px;
+            background: #1a1a2e;
+            border: 2px solid #2ecc71;
+            border-radius: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(46, 204, 113, 0.3);
+            position: sticky;
+            top: 0;
+            background: #1a1a2e;
+            z-index: 1;
+        }
+        
+        .modal-title {
+            color: #2ecc71;
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #2ecc71;
+        }
+        
+        /* ========== FOOTER ========== */
+        .main-footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h5 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .two-column {
+                flex-direction: column;
+            }
+            
+            .modal-row {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                padding: 20px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ========== RUGBY SPECIFIC STYLES ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #2ecc71, #1abc9c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        strong {
+            color: #2ecc71;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                SPORTS<span class="logo-highlight">INFO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="rugby.html" class="nav-link active">Rugby</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="page-header">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <h1 class="page-title">RUGBY</h1>
+        </div>
+        
+        <div class="hero-section">
+            <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86c4c2?w=1200" alt="Rugby Field" class="hero-image">
+            <h2 class="hero-title">THE GENTLEMAN'S GAME PLAYED BY BARBARIANS</h2>
+            <p class="hero-description">
+                Rugby is a contact team sport that originated in England in the first half of the 19th century. It is based on running with the ball in hand.
+            </p>
+        </div>
+
+        <!-- Rugby Types -->
+        <div class="content-card">
+            <h2 class="section-title">RUGBY VARIATIONS</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-football-ball"></i> Rugby Union
+                        </h3>
+                        <ul>
+                            <li>15 players per team</li>
+                            <li>80 minutes (2×40 min halves)</li>
+                            <li>Points: Try (5), Conversion (2), Penalty (3), Drop Goal (3)</li>
+                            <li>Rucks, mauls, lineouts, scrums</li>
+                            <li>Professional and amateur levels</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-running"></i> Rugby League
+                        </h3>
+                        <ul>
+                            <li>13 players per team</li>
+                            <li>80 minutes (2×40 min halves)</li>
+                            <li>Points: Try (4), Conversion (2), Penalty (2), Drop Goal (1)</li>
+                            <li>6-tackle rule (play-the-ball)</li>
+                            <li>Primarily professional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="content-card">
+            <h2 class="section-title">BASIC INFORMATION</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Players</h4>
+                            <p>Forwards (1-8): Props, Hooker, Locks, Flankers, No. 8 | Backs (9-15): Scrum-half, Fly-half, Centers, Wings, Fullback</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-ruler"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Field Dimensions</h4>
+                            <p>Field: 100m long × 70m wide | In-goal area: 10-22m deep | Goalposts: H-shaped, 5.6m wide</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Strategy</h4>
+                            <p>Set pieces, phase play, kicking tactics, defensive patterns, ball retention, territorial gain.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Basic Rules</h4>
+                            <p>Forward pass not allowed | Must release ball when tackled | Offside line at rucks/mauls | Knock-on results in scrum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">SCORING METHODS</h2>
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-trophy"></i> Rugby Union Scoring
+                        </h3>
+                        <ul>
+                            <li><strong>Try:</strong> 5 points (touching ball down in opponent's in-goal)</li>
+                            <li><strong>Conversion:</strong> 2 points (kick after try)</li>
+                            <li><strong>Penalty Kick:</strong> 3 points (for infringements)</li>
+                            <li><strong>Drop Goal:</strong> 3 points (drop kick during play)</li>
+                            <li><strong>Penalty Try:</strong> 7 points (automatic try + conversion)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-whistle"></i> Set Pieces
+                        </h3>
+                        <ul>
+                            <li><strong>Scrum:</strong> Restart after minor infringement</li>
+                            <li><strong>Lineout:</strong> Restart after ball goes out</li>
+                            <li><strong>Ruck:</strong> Contest for ball on ground</li>
+                            <li><strong>Maul:</strong> Contest for ball with players standing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">PLAYER POSITIONS</h2>
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-user-shield"></i> Forwards (1-8)
+                        </h3>
+                        <ul>
+                            <li><strong>Props (1,3):</strong> Scrum power, lifting in lineouts</li>
+                            <li><strong>Hooker (2):</strong> Throws in lineouts, hooks ball in scrum</li>
+                            <li><strong>Locks (4,5):</strong> Jumpers in lineouts, scrum power</li>
+                            <li><strong>Flankers (6,7):</strong> Ball winners, tacklers</li>
+                            <li><strong>No. 8 (8):</strong> Controls ball at scrum base, ball carrier</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-bolt"></i> Backs (9-15)
+                        </h3>
+                        <ul>
+                            <li><strong>Scrum-half (9):</strong> Link between forwards and backs</li>
+                            <li><strong>Fly-half (10):</strong> Playmaker, decision maker</li>
+                            <li><strong>Centers (12,13):</strong> Attack and defense</li>
+                            <li><strong>Wings (11,14):</strong> Speed, finishing tries</li>
+                            <li><strong>Fullback (15):</strong> Last line of defense</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Famous Players -->
+        <div class="content-card">
+            <h2 class="section-title">RUGBY LEGENDS</h2>
+            <p>Click on any player to view detailed information</p>
+            
+            <div class="player-gallery">
+                <div class="player-card" onclick="showPlayerModal('carter')">
+                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=500" alt="Dan Carter" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Dan Carter</div>
+                        <div class="player-country">New Zealand</div>
+                        <div class="player-position">Fly-half</div>
+                    </div>
+                </div>
+                
+                <div class="player-card" onclick="showPlayerModal('mccaw')">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?w=500" alt="Richie McCaw" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Richie McCaw</div>
+                        <div class="player-country">New Zealand</div>
+                        <div class="player-position">Flanker</div>
+                    </div>
+                </div>
+                
+                <div class="player-card" onclick="showPlayerModal('wilkinson')">
+                    <img src="https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500" alt="Jonny Wilkinson" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Jonny Wilkinson</div>
+                        <div class="player-country">England</div>
+                        <div class="player-position">Fly-half</div>
+                    </div>
+                </div>
+                
+                <div class="player-card" onclick="showPlayerModal('habana')">
+                    <img src="https://images.unsplash.com/photo-1580086319619-3ed498161c0a?w=500" alt="Bryan Habana" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Bryan Habana</div>
+                        <div class="player-country">South Africa</div>
+                        <div class="player-position">Wing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Major Tournaments -->
+        <div class="content-card">
+            <h2 class="section-title">MAJOR TOURNAMENTS</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-globe"></i> Rugby World Cup
+                        </h3>
+                        <p><strong>Frequency:</strong> Every 4 years</p>
+                        <p><strong>First:</strong> 1987 (New Zealand & Australia)</p>
+                        <p><strong>Most Wins:</strong> New Zealand (3), South Africa (4)</p>
+                        <p><strong>Format:</strong> 20 teams, pool stage then knockout</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-flag"></i> Six Nations
+                        </h3>
+                        <p><strong>Teams:</strong> England, Ireland, Scotland, Wales, France, Italy</p>
+                        <p><strong>Format:</strong> Annual tournament</p>
+                        <p><strong>Trophy:</strong> Triple Crown, Grand Slam, Calcutta Cup</p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-trophy"></i> Rugby Championship
+                        </h3>
+                        <p><strong>Teams:</strong> New Zealand, Australia, South Africa, Argentina</p>
+                        <p><strong>Formerly:</strong> Tri Nations (1996-2011)</p>
+                        <p><strong>Format:</strong> Home and away matches</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-medal"></i> British & Irish Lions
+                        </h3>
+                        <p><strong>Teams:</strong> Combined team from UK & Ireland</p>
+                        <p><strong>Tours:</strong> Every 4 years to Southern Hemisphere</p>
+                        <p><strong>Opponents:</strong> New Zealand, South Africa, Australia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Modals -->
+    <div id="modal-carter" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">DAN CARTER</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=500" alt="Dan Carter" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #2ecc71; margin-bottom: 15px;">The Greatest Fly-Half</h3>
+                        <p><strong>Born:</strong> March 5, 1982</p>
+                        <p><strong>Height:</strong> 1.78m (5'10")</p>
+                        <p><strong>Weight:</strong> 92kg (203 lbs)</p>
+                        <p><strong>Position:</strong> Fly-half</p>
+                        <p><strong>Teams:</strong> Canterbury, Crusaders, Racing 92, Kobelco Steelers</p>
+                        <p><strong>Test Caps:</strong> 112 for New Zealand</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #2ecc71; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li>2× Rugby World Cup winner (2011, 2015)</li>
+                        <li>3× World Rugby Player of the Year (2005, 2012, 2015)</li>
+                        <li>All-time leading point scorer for All Blacks (1,598 points)</li>
+                        <li>Most points in Super Rugby history (1,708 points)</li>
+                        <li>10× Tri Nations/Rugby Championship winner</li>
+                        <li>7× Super Rugby champion with Crusaders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-mccaw" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">RICHIE MCCAW</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?w=500" alt="Richie McCaw" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #2ecc71; margin-bottom: 15px;">The Open-Side Legend</h3>
+                        <p><strong>Born:</strong> December 31, 1980</p>
+                        <p><strong>Height:</strong> 1.87m (6'2")</p>
+                        <p><strong>Weight:</strong> 107kg (236 lbs)</p>
+                        <p><strong>Position:</strong> Flanker (Openside)</p>
+                        <p><strong>Teams:</strong> Canterbury, Crusaders</p>
+                        <p><strong>Test Caps:</strong> 148 for New Zealand (most capped)</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #2ecc71; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li>2× Rugby World Cup winner (2011 as captain, 2015 as captain)</li>
+                        <li>3× World Rugby Player of the Year (2006, 2009, 2010)</li>
+                        <li>Most capped test rugby player (148 caps)</li>
+                        <li>Most capped All Blacks captain (110 tests as captain)</li>
+                        <li>10× Tri Nations/Rugby Championship winner</li>
+                        <li>Super Rugby champion with Crusaders</li>
+                        <li>Only player to win World Rugby Player of the Year three times</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5>Rugby Types</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Rugby Union</a></li>
+                        <li><a href="#">Rugby League</a></li>
+                        <li><a href="#">Rugby Sevens</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Major Tournaments</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Rugby World Cup</a></li>
+                        <li><a href="#">Six Nations</a></li>
+                        <li><a href="#">Rugby Championship</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="contact-us.html">SportsInfo HQ</a></li>
+                        <li><a href="mailto:info@sportsinfo.com">info@sportsinfo.com</a></li>
+                        <li><a href="tel:+1-234-567-890">+1-234-567-890</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Follow Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 SportsInfo Pro | Rugby Section
+            </div>
+        </div>
+    </footer>
+
+    <!-- MINIMAL JAVASCRIPT -->
+    <script>
+        // Simple Modal Functions
+        function showPlayerModal(playerId) {
+            // Hide all modals first
+            closeAllModals();
+            
+            // Show the selected player modal
+            const modal = document.getElementById('modal-' + playerId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeAllModals() {
+            // Get all modals
+            const modals = document.querySelectorAll('.modal-overlay');
+            
+            // Hide each modal
+            modals.forEach(function(modal) {
+                modal.style.display = 'none';
+            });
+            
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeAllModals();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+    </script>
+</body>
+</html>

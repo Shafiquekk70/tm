@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook | SportsInfo Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #05070a;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .guestbook-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .form-label { color: #ffcc00; font-weight: 600; }
+        .form-control, .form-select {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+        .form-control:focus {
+            background: rgba(0,0,0,0.5);
+            border-color: #ffcc00;
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+        }
+        .btn-submit {
+            background: #ffcc00;
+            color: #000;
+            font-weight: 800;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            background: #fff;
+            box-shadow: 0 0 20px #fff;
+        }
+        .star-rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 2rem;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255,204,0,0.8);
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="guestbook-card">
+                <h2 class="text-center mb-4" style="font-family: 'Oswald'; color: #ffcc00;">VISITOR GUESTBOOK</h2>
+                <p class="text-center text-muted mb-5">We value your feedback! Please leave your details below.</p>
+                
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Date of Visit</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">City/Address</label>
+                            <input type="text" class="form-control" placeholder="Your location">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Comments about the site</label>
+                        <textarea class="form-control" rows="4" placeholder="How was your experience?"></textarea>
+                    </div>
+
+                    <div class="row align-items-end">
+                        <div class="col-md-6 mb-3">
+    <label class="form-label">Rate Our Site</label>
+
+    <div class="star-rating">
+        <input type="radio" name="rating" id="star5" value="5">
+        <label for="star5">★</label>
+
+        <input type="radio" name="rating" id="star4" value="4">
+        <label for="star4">★</label>
+
+        <input type="radio" name="rating" id="star3" value="3">
+        <label for="star3">★</label>
+
+        <input type="radio" name="rating" id="star2" value="2">
+        <label for="star2">★</label>
+
+        <input type="radio" name="rating" id="star1" value="1">
+        <label for="star1">★</label>
+    </div>
+</div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label d-block">Would you recommend us?</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="recommend" id="yes" value="yes" checked>
+                                <label class="form-check-label" for="yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="recommend" id="no" value="no">
+                                <label class="form-check-label" for="no">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit mt-4">SUBMIT ENTRY</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football | SportsInfo Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========== BASIC STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a1a2d;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+        
+        /* Background Effects */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 123, 255, 0.15);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: 10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 200, 83, 0.1);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        /* ========== NAVIGATION ========== */
+        .main-nav {
+            background: rgba(10, 26, 45, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-highlight {
+            color: #00c853;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #00c853;
+        }
+        
+        .nav-link.active {
+            color: #00c853;
+        }
+        
+        /* ========== MAIN CONTAINER ========== */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto 50px;
+        }
+        
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #00c853, #69f0ae);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 200, 83, 0.1);
+            color: #00c853;
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 200, 83, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid rgba(0, 200, 83, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #00c853;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            color: #00c853;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        
+        /* ========== CONTENT CARDS ========== */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .content-card:hover {
+            border-color: #00c853;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 83, 0.2);
+        }
+        
+        .section-title {
+            color: #00c853;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 200, 83, 0.3);
+        }
+        
+        /* ========== TWO COLUMN LAYOUT ========== */
+        .two-column {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        /* ========== FEATURE BOX ========== */
+        .feature-box {
+            background: rgba(0, 200, 83, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00c853;
+        }
+        
+        .feature-title {
+            color: #00c853;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* ========== FACT BOX ========== */
+        .fact-box {
+            background: linear-gradient(135deg, rgba(0,200,83,0.1), rgba(33,150,243,0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(0, 200, 83, 0.2);
+        }
+        
+        /* ========== PLAYER GALLERY ========== */
+        .player-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .player-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .player-card:hover {
+            border-color: #00c853;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 200, 83, 0.3);
+        }
+        
+        .player-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .player-name {
+            color: #00c853;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .player-country {
+            color: #aaaaaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .player-position {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        /* ========== STATISTICS TABLE ========== */
+        .stats-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .stats-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .stats-table th {
+            background: rgba(0, 200, 83, 0.2);
+            color: #00c853;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stats-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .stats-table tr:hover {
+            background: rgba(0, 200, 83, 0.05);
+        }
+        
+        /* ========== TEAMS GRID ========== */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .team-item {
+            background: rgba(0, 200, 83, 0.1);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .team-item:hover {
+            background: rgba(0, 200, 83, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* ========== INFO ITEMS ========== */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 200, 83, 0.1);
+            border-radius: 10px;
+            margin-right: 15px;
+            color: #00c853;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            color: #00c853;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-container {
+            width: 100%;
+            max-width: 800px;
+            background: #0a1a2d;
+            border: 2px solid #00c853;
+            border-radius: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 200, 83, 0.3);
+            position: sticky;
+            top: 0;
+            background: #0a1a2d;
+            z-index: 1;
+        }
+        
+        .modal-title {
+            color: #00c853;
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #00c853;
+        }
+        
+        /* ========== FOOTER ========== */
+        .main-footer {
+            background-color: #0a1a2d;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h5 {
+            color: #00c853;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00c853;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .two-column {
+                flex-direction: column;
+            }
+            
+            .modal-row {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                padding: 20px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .teams-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                SPORTS<span class="logo-highlight">INFO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
+                <li><a href="football.html" class="nav-link active">Football</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">FOOTBALL</h1>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=1200" alt="Football Stadium" class="hero-image">
+            <h2 class="hero-title">THE BEAUTIFUL GAME</h2>
+            <p class="hero-description">
+                Football is the world's most popular sport, played by over 250 million players in more than 200 countries. It's a game of skill, strategy, and passion.
+            </p>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="content-card">
+            <h2 class="section-title">BASIC INFORMATION</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Number of Players</h4>
+                            <p>11 players per team on the field, with 3-7 substitutes allowed depending on the competition.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Match Duration</h4>
+                            <p>90 minutes (two halves of 45 minutes) with added time for stoppages. Extra time of 30 minutes if needed.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Main Strategy</h4>
+                            <p>Formation tactics, ball possession, counter-attacking, set pieces, and team coordination.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Field Dimensions</h4>
+                            <p>Length: 100-110m, Width: 64-75m. Goal size: 7.32m wide × 2.44m high.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <!-- Left Column - Game Strategy -->
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">GAME STRATEGY</h2>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-chess-board"></i> Formations
+                        </h3>
+                        <ul>
+                            <li><strong>4-4-2:</strong> Classic balanced formation</li>
+                            <li><strong>4-3-3:</strong> Attacking with wingers</li>
+                            <li><strong>3-5-2:</strong> Strong midfield control</li>
+                            <li><strong>4-2-3-1:</strong> Modern flexible system</li>
+                            <li><strong>5-3-2:</strong> Defensive counter-attack</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-running"></i> Playing Styles
+                        </h3>
+                        <ul>
+                            <li><strong>Tiki-Taka:</strong> Short passing and possession (Barcelona style)</li>
+                            <li><strong>Counter-Attack:</strong> Quick transitions from defense to attack</li>
+                            <li><strong>High Press:</strong> Pressing opponents high up the pitch</li>
+                            <li><strong>Park the Bus:</strong> Ultra-defensive strategy</li>
+                            <li><strong>Total Football:</strong> Positional flexibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Rules -->
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">RULES OF THE GAME</h2>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-flag"></i> Basic Rules
+                        </h3>
+                        <ul>
+                            <li>No hands except for goalkeeper in penalty area</li>
+                            <li>Offside rule: Attacker must have 2 opponents between them and goal</li>
+                            <li>Throw-ins for ball out on sidelines</li>
+                            <li>Goal kicks and corner kicks for ball out on end lines</li>
+                            <li>Direct and indirect free kicks for fouls</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-red-card"></i> Fouls & Cards
+                        </h3>
+                        <ul>
+                            <li><strong>Yellow Card:</strong> Warning for serious fouls</li>
+                            <li><strong>Red Card:</strong> Immediate ejection for violent conduct</li>
+                            <li><strong>Penalty:</strong> For fouls inside penalty area</li>
+                            <li><strong>VAR:</strong> Video Assistant Referee for key decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important Facts -->
+        <div class="content-card">
+            <h2 class="section-title">IMPORTANT FACTS</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-history"></i> History & Origin
+                        </h3>
+                        <ul>
+                            <li><strong>Origin:</strong> Ancient China (Cuju), Greece, Rome</li>
+                            <li><strong>Modern Football:</strong> England 1863 (FA founded)</li>
+                            <li><strong>First World Cup:</strong> 1930 in Uruguay</li>
+                            <li><strong>FIFA Founded:</strong> 1904 in Paris</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-trophy"></i> Major Tournaments
+                        </h3>
+                        <ul>
+                            <li><strong>FIFA World Cup:</strong> Every 4 years</li>
+                            <li><strong>UEFA Champions League:</strong> Annual club competition</li>
+                            <li><strong>UEFA European Championship:</strong> Every 4 years</li>
+                            <li><strong>Copa America:</strong> South American championship</li>
+                            <li><strong>Premier League:</strong> Top English league</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics & Records -->
+        <div class="content-card">
+            <h2 class="section-title">WORLD RECORDS & STATISTICS</h2>
+            
+            <div class="stats-container">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Record Type</th>
+                            <th>Record</th>
+                            <th>Player/Team</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Most World Cups</td>
+                            <td>5 Titles</td>
+                            <td>Brazil</td>
+                            <td>1958, 1962, 1970, 1994, 2002</td>
+                        </tr>
+                        <tr>
+                            <td>Most Goals (Intl)</td>
+                            <td>128 Goals</td>
+                            <td>Cristiano Ronaldo</td>
+                            <td>Portugal (2003-Present)</td>
+                        </tr>
+                        <tr>
+                            <td>Most Ballon d'Or</td>
+                            <td>8 Awards</td>
+                            <td>Lionel Messi</td>
+                            <td>2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023</td>
+                        </tr>
+                        <tr>
+                            <td>Fastest Goal</td>
+                            <td>2.8 Seconds</td>
+                            <td>Nawaf Al-Abed</td>
+                            <td>Al Hilal vs Al Shoalah, 2009</td>
+                        </tr>
+                        <tr>
+                            <td>Most Expensive Transfer</td>
+                            <td>€222 million</td>
+                            <td>Neymar</td>
+                            <td>Barcelona to PSG, 2017</td>
+                        </tr>
+                        <tr>
+                            <td>Most UCL Titles</td>
+                            <td>14 Titles</td>
+                            <td>Real Madrid</td>
+                            <td>1956-2022</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Famous Players -->
+        <div class="content-card">
+            <h2 class="section-title">LEGENDARY PLAYERS</h2>
+            <p>Click on any player to view detailed information</p>
+            
+            <div class="player-gallery">
+                <!-- Player 1 -->
+                <div class="player-card" onclick="showPlayerModal('messi')">
+                    <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=500" alt="Lionel Messi" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Lionel Messi</div>
+                        <div class="player-country">Argentina</div>
+                        <div class="player-position">Forward</div>
+                    </div>
+                </div>
+                
+                <!-- Player 2 -->
+                <div class="player-card" onclick="showPlayerModal('ronaldo')">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=500" alt="Cristiano Ronaldo" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Cristiano Ronaldo</div>
+                        <div class="player-country">Portugal</div>
+                        <div class="player-position">Forward</div>
+                    </div>
+                </div>
+                
+                <!-- Player 3 -->
+                <div class="player-card" onclick="showPlayerModal('pele')">
+                    <img src="https://images.unsplash.com/photo-1543321269-9d86d3680e1c?w=500" alt="Pelé" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Pelé</div>
+                        <div class="player-country">Brazil</div>
+                        <div class="player-position">Forward</div>
+                    </div>
+                </div>
+                
+                <!-- Player 4 -->
+                <div class="player-card" onclick="showPlayerModal('maradona')">
+                    <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=500" alt="Diego Maradona" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Diego Maradona</div>
+                        <div class="player-country">Argentina</div>
+                        <div class="player-position">Attacking Midfielder</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Famous Teams -->
+        <div class="content-card">
+            <h2 class="section-title">FAMOUS FOOTBALL CLUBS</h2>
+            <p>Top football clubs from around the world</p>
+            
+            <div class="teams-grid">
+                <div class="team-item">Real Madrid</div>
+                <div class="team-item">Barcelona</div>
+                <div class="team-item">Manchester United</div>
+                <div class="team-item">Bayern Munich</div>
+                <div class="team-item">Liverpool</div>
+                <div class="team-item">AC Milan</div>
+                <div class="team-item">Juventus</div>
+                <div class="team-item">Paris Saint-Germain</div>
+                <div class="team-item">Chelsea</div>
+                <div class="team-item">Manchester City</div>
+                <div class="team-item">Arsenal</div>
+                <div class="team-item">Ajax</div>
+                <div class="team-item">Borussia Dortmund</div>
+                <div class="team-item">Inter Milan</div>
+                <div class="team-item">Atletico Madrid</div>
+                <div class="team-item">Tottenham</div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="color: #00c853; margin-bottom: 15px;">Major Leagues</h3>
+                <p><strong>English Premier League:</strong> Most watched league worldwide</p>
+                <p><strong>La Liga (Spain):</strong> Home to Barcelona and Real Madrid</p>
+                <p><strong>Serie A (Italy):</strong> Known for tactical football</p>
+                <p><strong>Bundesliga (Germany):</strong> High attendance and fan culture</p>
+                <p><strong>Ligue 1 (France):</strong> PSG dominance in recent years</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Modals -->
+    <!-- Modal 1: Lionel Messi -->
+    <div id="modal-messi" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">LIONEL MESSI</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=500" alt="Lionel Messi" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #00c853; margin-bottom: 15px;">The GOAT</h3>
+                        <p><strong>Nationality:</strong> Argentine</p>
+                        <p><strong>Born:</strong> June 24, 1987</p>
+                        <p><strong>Height:</strong> 1.70m (5'7")</p>
+                        <p><strong>Position:</strong> Forward / Attacking Midfielder</p>
+                        <p><strong>Current Club:</strong> Inter Miami (MLS)</p>
+                        <p><strong>Former Clubs:</strong> Barcelona, Paris Saint-Germain</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #00c853; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li>8× Ballon d'Or winner (most in history)</li>
+                        <li>4× UEFA Champions League winner</li>
+                        <li>10× La Liga champion with Barcelona</li>
+                        <li>2022 FIFA World Cup winner with Argentina</li>
+                        <li>All-time top scorer for Barcelona (672 goals)</li>
+                        <li>Most assists in La Liga history (192 assists)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Cristiano Ronaldo -->
+    <div id="modal-ronaldo" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">CRISTIANO RONALDO</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=500" alt="Cristiano Ronaldo" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #00c853; margin-bottom: 15px;">CR7 - Goal Machine</h3>
+                        <p><strong>Nationality:</strong> Portuguese</p>
+                        <p><strong>Born:</strong> February 5, 1985</p>
+                        <p><strong>Height:</strong> 1.87m (6'2")</p>
+                        <p><strong>Position:</strong> Forward</p>
+                        <p><strong>Current Club:</strong> Al-Nassr (Saudi Pro League)</p>
+                        <p><strong>Former Clubs:</strong> Sporting CP, Manchester United, Real Madrid, Juventus</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #00c853; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li>5× Ballon d'Or winner</li>
+                        <li>5× UEFA Champions League winner</li>
+                        <li>All-time top scorer in UEFA Champions League (140 goals)</li>
+                        <li>All-time top scorer in international football (128 goals)</li>
+                        <li>7× league titles in England, Spain, and Italy</li>
+                        <li>2016 UEFA European Championship winner</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5>Sports Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Team Sports</a></li>
+                        <li><a href="index.html">Individual Sports</a></li>
+                        <li><a href="football.html">Football</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Football Leagues</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Premier League</a></li>
+                        <li><a href="#">La Liga</a></li>
+                        <li><a href="#">Champions League</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="contact-us.html">SportsInfo HQ</a></li>
+                        <li><a href="mailto:info@sportsinfo.com">info@sportsinfo.com</a></li>
+                        <li><a href="tel:+1-234-567-890">+1-234-567-890</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Follow Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 SportsInfo Pro | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- MINIMAL JAVASCRIPT -->
+    <script>
+        // Simple Modal Functions
+        function showPlayerModal(playerId) {
+            // Hide all modals first
+            closeAllModals();
+            
+            // Show the selected player modal
+            const modal = document.getElementById('modal-' + playerId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+        
+        function closeAllModals() {
+            // Get all modals
+            const modals = document.querySelectorAll('.modal-overlay');
+            
+            // Hide each modal
+            modals.forEach(function(modal) {
+                modal.style.display = 'none';
+            });
+            
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeAllModals();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+    </script>
+</body>
+</html>

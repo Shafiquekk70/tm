@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming | SportsInfo Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========== BASIC STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0c2461;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+        
+        /* Background Effects */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(52, 152, 219, 0.15);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: 10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(86, 204, 242, 0.1);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        /* ========== NAVIGATION ========== */
+        .main-nav {
+            background: rgba(12, 36, 97, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-highlight {
+            color: #3498db;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #3498db;
+        }
+        
+        .nav-link.active {
+            color: #3498db;
+        }
+        
+        /* ========== MAIN CONTAINER ========== */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto 50px;
+        }
+        
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #3498db, #56ccf2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            color: #3498db;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        
+        /* ========== CONTENT CARDS ========== */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .content-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .section-title {
+            color: #3498db;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        /* ========== TWO COLUMN LAYOUT ========== */
+        .two-column {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        /* ========== FEATURE BOX ========== */
+        .feature-box {
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .feature-title {
+            color: #3498db;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* ========== FACT BOX ========== */
+        .fact-box {
+            background: linear-gradient(135deg, rgba(52,152,219,0.1), rgba(86,204,242,0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        /* ========== PLAYER GALLERY ========== */
+        .player-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .player-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .player-card:hover {
+            border-color: #3498db;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
+        }
+        
+        .player-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .player-name {
+            color: #3498db;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .player-country {
+            color: #aaaaaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .player-position {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        /* ========== STATISTICS TABLE ========== */
+        .stats-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .stats-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .stats-table th {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stats-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .stats-table tr:hover {
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* ========== COUNTRIES GRID ========== */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .country-item {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .country-item:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* ========== INFO ITEMS ========== */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            margin-right: 15px;
+            color: #3498db;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            color: #3498db;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        /* ========== SWIMMING POOL DIAGRAM ========== */
+        .pool-diagram {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(52,152,219,0.05), rgba(86,204,242,0.05));
+            border-radius: 15px;
+            border: 2px dashed rgba(52, 152, 219, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .pool-label {
+            color: #3498db;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-container {
+            width: 100%;
+            max-width: 800px;
+            background: #0c2461;
+            border: 2px solid #3498db;
+            border-radius: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            position: sticky;
+            top: 0;
+            background: #0c2461;
+            z-index: 1;
+        }
+        
+        .modal-title {
+            color: #3498db;
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #3498db;
+        }
+        
+        /* ========== FOOTER ========== */
+        .main-footer {
+            background-color: #0c2461;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h5 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .two-column {
+                flex-direction: column;
+            }
+            
+            .modal-row {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                padding: 20px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ========== SWIMMING SPECIFIC STYLES ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #3498db, #56ccf2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        strong {
+            color: #3498db;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #cccccc;
+        }
+        
+        /* ========== SWIMMING STROKE ICONS ========== */
+        .stroke-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        /* ========== MEDAL COLORS ========== */
+        .gold { color: #ffd700; }
+        .silver { color: #c0c0c0; }
+        .bronze { color: #cd7f32; }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                SPORTS<span class="logo-highlight">INFO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="swimming.html" class="nav-link active">Swimming</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="page-header">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <h1 class="page-title">SWIMMING</h1>
+        </div>
+        
+        <div class="hero-section">
+            <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86c4c2?w=1200" alt="Swimming Pool" class="hero-image">
+            <h2 class="hero-title">THE ART OF AQUATIC SPEED</h2>
+            <p class="hero-description">
+                Swimming is an individual or team racing sport that requires the use of one's entire body to move through water. It's one of the most popular Olympic sports.
+            </p>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="content-card">
+            <h2 class="section-title">SWIMMING STROKES</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-swimmer"></i> Freestyle (Front Crawl)
+                        </h3>
+                        <ul>
+                            <li>Fastest swimming stroke</li>
+                            <li>Alternating arm movements</li>
+                            <li>Flutter kick</li>
+                            <li>Side breathing</li>
+                            <li>Used in freestyle events</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-water"></i> Backstroke
+                        </h3>
+                        <ul>
+                            <li>Swum on the back</li>
+                            <li>Alternating arm movements</li>
+                            <li>Flutter kick</li>
+                            <li>No breathing restrictions</li>
+                            <li>Flags for flip turn timing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-fish"></i> Breaststroke
+                        </h3>
+                        <ul>
+                            <li>Oldest swimming stroke</li>
+                            <li>Synchronous arm movements</li>
+                            <li>Whip kick (frog kick)</li>
+                            <li>Head must break surface each stroke</li>
+                            <li>Timing is crucial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-wind"></i> Butterfly
+                        </h3>
+                        <ul>
+                            <li>Most physically demanding</li>
+                            <li>Synchronous arm recovery</li>
+                            <li>Dolphin kick</li>
+                            <li>Both arms must clear water together</li>
+                            <li>Requires excellent timing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pool Diagram -->
+        <div class="content-card">
+            <h2 class="section-title">SWIMMING POOL STANDARDS</h2>
+            <div class="pool-diagram">
+                <div class="pool-label">
+                    <h3>🏊 Olympic Swimming Pool</h3>
+                    <p>Length: 50 meters | Width: 25 meters</p>
+                    <p>Depth: 2 meters | Lanes: 8-10</p>
+                    <p>Lane Width: 2.5 meters | Temperature: 25-28°C</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">COMPETITIVE EVENTS</h2>
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-medal"></i> Individual Events
+                        </h3>
+                        <ul>
+                            <li><strong>Freestyle:</strong> 50m, 100m, 200m, 400m, 800m, 1500m</li>
+                            <li><strong>Backstroke:</strong> 50m, 100m, 200m</li>
+                            <li><strong>Breaststroke:</strong> 50m, 100m, 200m</li>
+                            <li><strong>Butterfly:</strong> 50m, 100m, 200m</li>
+                            <li><strong>Individual Medley:</strong> 200m, 400m (all four strokes)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-users"></i> Relay Events
+                        </h3>
+                        <ul>
+                            <li><strong>Freestyle Relay:</strong> 4×100m, 4×200m</li>
+                            <li><strong>Medley Relay:</strong> 4×100m (back, breast, fly, free)</li>
+                            <li><strong>Mixed Relay:</strong> 4×100m (2 men, 2 women)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">RULES & TECHNIQUES</h2>
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-flag"></i> Competition Rules
+                        </h3>
+                        <ul>
+                            <li>False start results in disqualification</li>
+                            <li>Must touch wall at each turn and finish</li>
+                            <li>Underwater dolphin kick limits (15m)</li>
+                            <li>Stroke technique must comply with rules</li>
+                            <li>Lane assignments by seed times</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-running"></i> Starts & Turns
+                        </h3>
+                        <ul>
+                            <li><strong>Forward Start:</strong> Freestyle, breaststroke, butterfly</li>
+                            <li><strong>Backstroke Start:</strong> In water with feet on wall</li>
+                            <li><strong>Flip Turn:</strong> Freestyle and backstroke</li>
+                            <li><strong>Open Turn:</strong> Breaststroke and butterfly</li>
+                            <li><strong>Relay Exchange:</strong> Touch timing crucial</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pool Standards -->
+        <div class="content-card">
+            <h2 class="section-title">COMPETITION POOLS</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-ruler"></i> Olympic Pool
+                        </h3>
+                        <ul>
+                            <li><strong>Length:</strong> 50 meters (long course)</li>
+                            <li><strong>Width:</strong> 25 meters (8-10 lanes)</li>
+                            <li><strong>Depth:</strong> Minimum 2 meters</li>
+                            <li><strong>Lane Width:</strong> 2.5 meters</li>
+                            <li><strong>Temperature:</strong> 25-28°C (77-82°F)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-swimming-pool"></i> Short Course
+                        </h3>
+                        <ul>
+                            <li><strong>Length:</strong> 25 meters/yards</li>
+                            <li><strong>Turns:</strong> More turns affect strategy</li>
+                            <li><strong>Records:</strong> Separate records from long course</li>
+                            <li><strong>Events:</strong> Same strokes, different distances</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Famous Swimmers -->
+        <div class="content-card">
+            <h2 class="section-title">SWIMMING LEGENDS</h2>
+            <p>Click on any swimmer to view detailed information</p>
+            
+            <div class="player-gallery">
+                <div class="player-card" onclick="showPlayerModal('phelps')">
+                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=500" alt="Michael Phelps" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Michael Phelps</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Butterfly/IM</div>
+                    </div>
+                </div>
+                
+                <div class="player-card" onclick="showPlayerModal('ledecky')">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?w=500" alt="Katie Ledecky" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Katie Ledecky</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Freestyle</div>
+                    </div>
+                </div>
+                
+                <div class="player-card" onclick="showPlayerModal('spitz')">
+                    <img src="https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500" alt="Mark Spitz" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Mark Spitz</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Freestyle/Butterfly</div>
+                    </div>
+                </div>
+                
+                <div class="player-card" onclick="showPlayerModal('thorpe')">
+                    <img src="https://images.unsplash.com/photo-1580086319619-3ed498161c0a?w=500" alt="Ian Thorpe" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Ian Thorpe</div>
+                        <div class="player-country">Australia</div>
+                        <div class="player-position">Freestyle</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- World Records -->
+        <div class="content-card">
+            <h2 class="section-title">WORLD RECORDS</h2>
+            
+            <div class="stats-container">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Time</th>
+                            <th>Swimmer</th>
+                            <th>Country</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Men's 100m Freestyle</td>
+                            <td>46.86s</td>
+                            <td>David Popovici</td>
+                            <td>Romania</td>
+                            <td>2022</td>
+                        </tr>
+                        <tr>
+                            <td>Women's 100m Freestyle</td>
+                            <td>51.71s</td>
+                            <td>Sarah Sjöström</td>
+                            <td>Sweden</td>
+                            <td>2017</td>
+                        </tr>
+                        <tr>
+                            <td>Men's 200m Butterfly</td>
+                            <td>1:50.34</td>
+                            <td>Kristóf Milák</td>
+                            <td>Hungary</td>
+                            <td>2022</td>
+                        </tr>
+                        <tr>
+                            <td>Women's 800m Freestyle</td>
+                            <td>8:04.79</td>
+                            <td>Katie Ledecky</td>
+                            <td>USA</td>
+                            <td>2016</td>
+                        </tr>
+                        <tr>
+                            <td>Men's 4×100m Medley</td>
+                            <td>3:26.78</td>
+                            <td>USA Team</td>
+                            <td>USA</td>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <td>Women's 200m Breaststroke</td>
+                            <td>2:18.95</td>
+                            <td>Evgeniia Chikunova</td>
+                            <td>Russia</td>
+                            <td>2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Olympic History -->
+        <div class="content-card">
+            <h2 class="section-title">OLYMPIC SWIMMING</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-trophy gold"></i> Most Olympic Golds
+                        </h3>
+                        <ul>
+                            <li><strong>Michael Phelps:</strong> 23 Gold, 3 Silver, 2 Bronze (28 total)</li>
+                            <li><strong>Mark Spitz:</strong> 9 Gold, 1 Silver, 1 Bronze (11 total)</li>
+                            <li><strong>Jenny Thompson:</strong> 8 Gold, 3 Silver, 1 Bronze (12 total)</li>
+                            <li><strong>Matt Biondi:</strong> 8 Gold, 2 Silver, 1 Bronze (11 total)</li>
+                            <li><strong>Katie Ledecky:</strong> 7 Gold, 3 Silver (10 total, active)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-history"></i> Olympic History
+                        </h3>
+                        <ul>
+                            <li><strong>First Olympic Swimming:</strong> 1896 Athens Games</li>
+                            <li><strong>First Women's Events:</strong> 1912 Stockholm Games</li>
+                            <li><strong>Butterfly Introduced:</strong> 1956 Melbourne Games</li>
+                            <li><strong>Electronic Timing:</strong> 1968 Mexico City Games</li>
+                            <li><strong>Most Successful Nation:</strong> United States</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Modals -->
+    <div id="modal-phelps" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">MICHAEL PHELPS</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=500" alt="Michael Phelps" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #3498db; margin-bottom: 15px;">The Baltimore Bullet</h3>
+                        <p><strong>Born:</strong> June 30, 1985</p>
+                        <p><strong>Height:</strong> 1.93m (6'4")</p>
+                        <p><strong>Weight:</strong> 88kg (194 lbs)</p>
+                        <p><strong>Specialty:</strong> Butterfly, Individual Medley, Freestyle</p>
+                        <p><strong>Olympic Debut:</strong> 2000 Sydney (age 15)</p>
+                        <p><strong>Retired:</strong> 2016</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #3498db; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li><span class="gold">23 Olympic Gold Medals</span> - Most in history</li>
+                        <li><span class="silver">3 Olympic Silver Medals</span></li>
+                        <li><span class="bronze">2 Olympic Bronze Medals</span></li>
+                        <li>28 Olympic Medals total - Most in history</li>
+                        <li>39 World Records set in career</li>
+                        <li>8 Gold Medals at 2008 Beijing Olympics - Single Games record</li>
+                        <li>World Swimmer of the Year: 8 times</li>
+                        <li>American Swimmer of the Year: 11 times</li>
+                        <li>Most gold medals at World Championships: 26</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ledecky" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">KATIE LEDECKY</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?w=500" alt="Katie Ledecky" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #3498db; margin-bottom: 15px;">Queen of Distance Swimming</h3>
+                        <p><strong>Born:</strong> March 17, 1997</p>
+                        <p><strong>Height:</strong> 1.80m (5'11")</p>
+                        <p><strong>Weight:</strong> 66kg (145 lbs)</p>
+                        <p><strong>Specialty:</strong> Freestyle (200m-1500m)</p>
+                        <p><strong>Olympic Debut:</strong> 2012 London (age 15)</p>
+                        <p><strong>Active:</strong> Yes</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #3498db; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li><span class="gold">7 Olympic Gold Medals</span></li>
+                        <li><span class="silver">3 Olympic Silver Medals</span></li>
+                        <li>World Record holder in:
+                            <ul>
+                                <li>Women's 800m Freestyle (8:04.79)</li>
+                                <li>Women's 1500m Freestyle (15:20.48)</li>
+                            </ul>
+                        </li>
+                        <li>Youngest American swimmer at 2012 Olympics (15 years)</li>
+                        <li>First woman to win 200m, 400m, 800m, 1500m freestyle at World Championships (2015)</li>
+                        <li>Most gold medals by a female swimmer at single World Championships: 5 (2015, 2017)</li>
+                        <li>Fastest female swimmer in history over 800m and 1500m freestyle</li>
+                        <li>World Swimmer of the Year: 2013, 2014, 2015, 2016, 2018</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5>Swimming Strokes</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Freestyle</a></li>
+                        <li><a href="#">Backstroke</a></li>
+                        <li><a href="#">Breaststroke</a></li>
+                        <li><a href="#">Butterfly</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Major Events</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Olympic Games</a></li>
+                        <li><a href="#">World Championships</a></li>
+                        <li><a href="#">FINA World Cup</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="contact-us.html">SportsInfo HQ</a></li>
+                        <li><a href="mailto:info@sportsinfo.com">info@sportsinfo.com</a></li>
+                        <li><a href="tel:+1-234-567-890">+1-234-567-890</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Follow Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 SportsInfo Pro | Swimming Section
+            </div>
+        </div>
+    </footer>
+
+    <!-- MINIMAL JAVASCRIPT -->
+    <script>
+        // Simple Modal Functions
+        function showPlayerModal(playerId) {
+            // Hide all modals first
+            closeAllModals();
+            
+            // Show the selected player modal
+            const modal = document.getElementById('modal-' + playerId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeAllModals() {
+            // Get all modals
+            const modals = document.querySelectorAll('.modal-overlay');
+            
+            // Hide each modal
+            modals.forEach(function(modal) {
+                modal.style.display = 'none';
+            });
+            
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeAllModals();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+    </script>
+</body>
+</html>

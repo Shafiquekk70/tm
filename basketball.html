@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball | SportsInfo Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========== BASIC STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a1520;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+        
+        /* Background Effects */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 80, 0, 0.15);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: 10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 122, 255, 0.1);
+            filter: blur(120px);
+            z-index: -1;
+        }
+        
+        /* ========== NAVIGATION ========== */
+        .main-nav {
+            background: rgba(10, 21, 32, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-highlight {
+            color: #ff5000;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #ff5000;
+        }
+        
+        .nav-link.active {
+            color: #ff5000;
+        }
+        
+        /* ========== MAIN CONTAINER ========== */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto 50px;
+        }
+        
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ff5000, #ff8a65);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 80, 0, 0.1);
+            color: #ff5000;
+            border: 1px solid rgba(255, 80, 0, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 80, 0, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 80, 0, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #ff5000;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            color: #ff5000;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        
+        /* ========== CONTENT CARDS ========== */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .content-card:hover {
+            border-color: #ff5000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 80, 0, 0.2);
+        }
+        
+        .section-title {
+            color: #ff5000;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 80, 0, 0.3);
+        }
+        
+        /* ========== TWO COLUMN LAYOUT ========== */
+        .two-column {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        /* ========== FEATURE BOX ========== */
+        .feature-box {
+            background: rgba(255, 80, 0, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff5000;
+        }
+        
+        .feature-title {
+            color: #ff5000;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* ========== FACT BOX ========== */
+        .fact-box {
+            background: linear-gradient(135deg, rgba(255,80,0,0.1), rgba(0,122,255,0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 80, 0, 0.2);
+        }
+        
+        /* ========== PLAYER GALLERY ========== */
+        .player-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .player-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .player-card:hover {
+            border-color: #ff5000;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 80, 0, 0.3);
+        }
+        
+        .player-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .player-name {
+            color: #ff5000;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .player-country {
+            color: #aaaaaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .player-position {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        /* ========== STATISTICS TABLE ========== */
+        .stats-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .stats-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .stats-table th {
+            background: rgba(255, 80, 0, 0.2);
+            color: #ff5000;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stats-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .stats-table tr:hover {
+            background: rgba(255, 80, 0, 0.05);
+        }
+        
+        /* ========== TEAMS GRID ========== */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .team-item {
+            background: rgba(255, 80, 0, 0.1);
+            border: 1px solid rgba(255, 80, 0, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .team-item:hover {
+            background: rgba(255, 80, 0, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* ========== INFO ITEMS ========== */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 80, 0, 0.1);
+            border-radius: 10px;
+            margin-right: 15px;
+            color: #ff5000;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            color: #ff5000;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        /* ========== COURT DIAGRAM ========== */
+        .court-diagram {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(255,80,0,0.05), rgba(0,122,255,0.05));
+            border-radius: 15px;
+            border: 2px dashed rgba(255, 80, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .court-label {
+            color: #ff5000;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-container {
+            width: 100%;
+            max-width: 800px;
+            background: #0a1520;
+            border: 2px solid #ff5000;
+            border-radius: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 80, 0, 0.3);
+            position: sticky;
+            top: 0;
+            background: #0a1520;
+            z-index: 1;
+        }
+        
+        .modal-title {
+            color: #ff5000;
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ff5000;
+        }
+        
+        /* ========== FOOTER ========== */
+        .main-footer {
+            background-color: #0a1520;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h5 {
+            color: #ff5000;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff5000;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .two-column {
+                flex-direction: column;
+            }
+            
+            .modal-row {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                padding: 20px;
+            }
+            
+            .player-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .teams-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                SPORTS<span class="logo-highlight">INFO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
+                <li><a href="basketball.html" class="nav-link active">Basketball</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">BASKETBALL</h1>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200" alt="Basketball Court" class="hero-image">
+            <h2 class="hero-title">THE FAST-PACED GAME</h2>
+            <p class="hero-description">
+                Basketball is a team sport in which two teams of five players each try to score points by shooting a ball through a hoop elevated 10 feet above the ground.
+            </p>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="content-card">
+            <h2 class="section-title">BASIC INFORMATION</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Number of Players</h4>
+                            <p>5 players per team on the court at a time. Each team has 7-12 players on roster.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Game Duration</h4>
+                            <p>NBA: 48 minutes (4 quarters of 12 min) | FIBA: 40 minutes (4 quarters of 10 min)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Main Strategy</h4>
+                            <p>Pick-and-roll, fast breaks, zone defense, isolation plays, and three-point shooting.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-ruler"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Court Dimensions</h4>
+                            <p>NBA Court: 94×50 feet | Hoop Height: 10 feet | 3-Point Line: 23.75 feet (NBA)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Court Diagram -->
+        <div class="content-card">
+            <h2 class="section-title">BASKETBALL COURT</h2>
+            <div class="court-diagram">
+                <div class="court-label">
+                    <h3>🏀 Basketball Court Areas</h3>
+                    <p>1. Paint / Key Area</p>
+                    <p>2. Three-Point Line</p>
+                    <p>3. Free Throw Line</p>
+                    <p>4. Center Circle</p>
+                    <p>5. Sidelines & Baseline</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <!-- Left Column - Game Strategy -->
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">GAME STRATEGY</h2>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-basketball-ball"></i> Offensive Strategies
+                        </h3>
+                        <ul>
+                            <li><strong>Pick and Roll:</strong> Most common play in basketball</li>
+                            <li><strong>Fast Break:</strong> Quick transition from defense to offense</li>
+                            <li><strong>Triangle Offense:</strong> Creating passing triangles</li>
+                            <li><strong>Motion Offense:</strong> Constant player movement</li>
+                            <li><strong>Isolation:</strong> One-on-one play for star players</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-shield-alt"></i> Defensive Strategies
+                        </h3>
+                        <ul>
+                            <li><strong>Man-to-Man:</strong> Each player guards specific opponent</li>
+                            <li><strong>Zone Defense:</strong> Players guard specific areas</li>
+                            <li><strong>Full Court Press:</strong> Defense across entire court</li>
+                            <li><strong>Double Team:</strong> Two defenders guard one offensive player</li>
+                            <li><strong>Box-and-One:</strong> Combination of zone and man defense</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Rules -->
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">RULES OF THE GAME</h2>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-flag"></i> Basic Rules
+                        </h3>
+                        <ul>
+                            <li>Dribbling required to move with the ball</li>
+                            <li>24-second shot clock in NBA (30 seconds in college)</li>
+                            <li>8-second half court violation</li>
+                            <li>3-second rule in the paint</li>
+                            <li>5-second closely guarded rule</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-whistle"></i> Fouls & Violations
+                        </h3>
+                        <ul>
+                            <li><strong>Personal Foul:</strong> Illegal physical contact</li>
+                            <li><strong>Technical Foul:</strong> Unsportsmanlike conduct</li>
+                            <li><strong>Traveling:</strong> Moving without dribbling</li>
+                            <li><strong>Double Dribble:</strong> Dribbling with two hands or stopping then restarting</li>
+                            <li><strong>Goaltending:</strong> Interfering with ball on downward flight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scoring System -->
+        <div class="content-card">
+            <h2 class="section-title">SCORING SYSTEM</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-bullseye"></i> Points System
+                        </h3>
+                        <ul>
+                            <li><strong>3 Points:</strong> Shot made from beyond three-point line</li>
+                            <li><strong>2 Points:</strong> Shot made from inside three-point line</li>
+                            <li><strong>1 Point:</strong> Each successful free throw</li>
+                            <li><strong>And-1:</strong> Additional free throw after made basket with foul</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-running"></i> Game Flow
+                        </h3>
+                        <ul>
+                            <li><strong>Tip-off:</strong> Game starts with jump ball</li>
+                            <li><strong>Quarters/Periods:</strong> 4 quarters with breaks</li>
+                            <li><strong>Halftime:</strong> 15-minute break after 2nd quarter</li>
+                            <li><strong>Overtime:</strong> 5 minutes if game tied after regulation</li>
+                            <li><strong>Timeouts:</strong> 7 per team in NBA (full & 20-second)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important Facts -->
+        <div class="content-card">
+            <h2 class="section-title">IMPORTANT FACTS</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-history"></i> History & Origin
+                        </h3>
+                        <ul>
+                            <li><strong>Invented:</strong> 1891 by Dr. James Naismith</li>
+                            <li><strong>First Game:</strong> December 21, 1891 in Springfield, Massachusetts</li>
+                            <li><strong>First NBA Game:</strong> November 1, 1946 (Toronto vs New York)</li>
+                            <li><strong>NBA Founded:</strong> 1946 as BAA, became NBA in 1949</li>
+                            <li><strong>First Basketball:</strong> Used soccer ball and peach baskets</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-trophy"></i> Major Tournaments
+                        </h3>
+                        <ul>
+                            <li><strong>NBA Finals:</strong> Annual championship series</li>
+                            <li><strong>FIBA Basketball World Cup:</strong> Every 4 years</li>
+                            <li><strong>Olympic Basketball:</strong> Since 1936 (men), 1976 (women)</li>
+                            <li><strong>EuroLeague:</strong> Top European club competition</li>
+                            <li><strong>NCAA March Madness:</strong> US college basketball tournament</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics & Records -->
+        <div class="content-card">
+            <h2 class="section-title">NBA RECORDS & STATISTICS</h2>
+            
+            <div class="stats-container">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Record Type</th>
+                            <th>Record</th>
+                            <th>Player</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Most Points Career</td>
+                            <td>38,387 Points</td>
+                            <td>Kareem Abdul-Jabbar</td>
+                            <td>1969-1989 (20 seasons)</td>
+                        </tr>
+                        <tr>
+                            <td>Most Points Game</td>
+                            <td>100 Points</td>
+                            <td>Wilt Chamberlain</td>
+                            <td>March 2, 1962 (Warriors vs Knicks)</td>
+                        </tr>
+                        <tr>
+                            <td>Most Assists Career</td>
+                            <td>15,806 Assists</td>
+                            <td>John Stockton</td>
+                            <td>1984-2003 (19 seasons)</td>
+                        </tr>
+                        <tr>
+                            <td>Most Rebounds Career</td>
+                            <td>23,924 Rebounds</td>
+                            <td>Wilt Chamberlain</td>
+                            <td>1959-1973 (14 seasons)</td>
+                        </tr>
+                        <tr>
+                            <td>Most Championships</td>
+                            <td>11 Rings</td>
+                            <td>Bill Russell</td>
+                            <td>Boston Celtics (1957-1969)</td>
+                        </tr>
+                        <tr>
+                            <td>Most 3-Pointers</td>
+                            <td>3,390 3PM</td>
+                            <td>Stephen Curry</td>
+                            <td>2009-Present (Active Record)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Famous Players -->
+        <div class="content-card">
+            <h2 class="section-title">NBA LEGENDS</h2>
+            <p>Click on any player to view detailed information</p>
+            
+            <div class="player-gallery">
+                <!-- Player 1 -->
+                <div class="player-card" onclick="showPlayerModal('jordan')">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500" alt="Michael Jordan" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Michael Jordan</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Shooting Guard</div>
+                    </div>
+                </div>
+                
+                <!-- Player 2 -->
+                <div class="player-card" onclick="showPlayerModal('lebron')">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?w=500" alt="LeBron James" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">LeBron James</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Small Forward</div>
+                    </div>
+                </div>
+                
+                <!-- Player 3 -->
+                <div class="player-card" onclick="showPlayerModal('kobe')">
+                    <img src="https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500" alt="Kobe Bryant" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Kobe Bryant</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Shooting Guard</div>
+                    </div>
+                </div>
+                
+                <!-- Player 4 -->
+                <div class="player-card" onclick="showPlayerModal('curry')">
+                    <img src="https://images.unsplash.com/photo-1580086319619-3ed498161c0a?w=500" alt="Stephen Curry" class="player-image">
+                    <div class="player-info">
+                        <div class="player-name">Stephen Curry</div>
+                        <div class="player-country">USA</div>
+                        <div class="player-position">Point Guard</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NBA Teams -->
+        <div class="content-card">
+            <h2 class="section-title">NBA TEAMS</h2>
+            <p>30 teams divided into Eastern and Western Conferences</p>
+            
+            <div class="teams-grid">
+                <div class="team-item">Los Angeles Lakers</div>
+                <div class="team-item">Boston Celtics</div>
+                <div class="team-item">Golden State Warriors</div>
+                <div class="team-item">Chicago Bulls</div>
+                <div class="team-item">Miami Heat</div>
+                <div class="team-item">San Antonio Spurs</div>
+                <div class="team-item">Toronto Raptors</div>
+                <div class="team-item">Philadelphia 76ers</div>
+                <div class="team-item">Milwaukee Bucks</div>
+                <div class="team-item">Houston Rockets</div>
+                <div class="team-item">Brooklyn Nets</div>
+                <div class="team-item">Dallas Mavericks</div>
+                <div class="team-item">Denver Nuggets</div>
+                <div class="team-item">New York Knicks</div>
+                <div class="team-item">Portland Trail Blazers</div>
+                <div class="team-item">LA Clippers</div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="color: #ff5000; margin-bottom: 15px;">NBA Structure</h3>
+                <p><strong>Eastern Conference:</strong> 15 teams in 3 divisions (Atlantic, Central, Southeast)</p>
+                <p><strong>Western Conference:</strong> 15 teams in 3 divisions (Pacific, Northwest, Southwest)</p>
+                <p><strong>Regular Season:</strong> 82 games per team (October to April)</p>
+                <p><strong>Playoffs:</strong> Top 8 teams from each conference (April to June)</p>
+                <p><strong>NBA Finals:</strong> Conference champions compete for championship</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Modals -->
+    <!-- Modal 1: Michael Jordan -->
+    <div id="modal-jordan" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">MICHAEL JORDAN</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500" alt="Michael Jordan" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #ff5000; margin-bottom: 15px;">His Airness</h3>
+                        <p><strong>Born:</strong> February 17, 1963</p>
+                        <p><strong>Height:</strong> 6'6" (1.98m)</p>
+                        <p><strong>Position:</strong> Shooting Guard</p>
+                        <p><strong>NBA Draft:</strong> 1984, 3rd overall pick</p>
+                        <p><strong>Teams:</strong> Chicago Bulls (1984-1993, 1995-1998), Washington Wizards (2001-2003)</p>
+                        <p><strong>College:</strong> University of North Carolina</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #ff5000; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li>6× NBA champion (1991–1993, 1996–1998)</li>
+                        <li>6× NBA Finals MVP</li>
+                        <li>5× NBA Most Valuable Player (1988, 1991, 1992, 1996, 1998)</li>
+                        <li>14× NBA All-Star</li>
+                        <li>10× NBA scoring champion</li>
+                        <li>2× Olympic gold medalist (1984, 1992)</li>
+                        <li>NBA Defensive Player of the Year (1988)</li>
+                        <li>NBA Rookie of the Year (1985)</li>
+                        <li>Considered greatest basketball player of all time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: LeBron James -->
+    <div id="modal-lebron" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">LEBRON JAMES</h2>
+                <button class="close-modal" onclick="closeAllModals()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?w=500" alt="LeBron James" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #ff5000; margin-bottom: 15px;">King James</h3>
+                        <p><strong>Born:</strong> December 30, 1984</p>
+                        <p><strong>Height:</strong> 6'9" (2.06m)</p>
+                        <p><strong>Position:</strong> Small Forward / Power Forward</p>
+                        <p><strong>NBA Draft:</strong> 2003, 1st overall pick</p>
+                        <p><strong>Teams:</strong> Cleveland Cavaliers (2003-2010, 2014-2018), Miami Heat (2010-2014), Los Angeles Lakers (2018-Present)</p>
+                        <p><strong>High School:</strong> St. Vincent-St. Mary High School</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #ff5000; margin-bottom: 10px;">Career Achievements</h4>
+                    <ul>
+                        <li>4× NBA champion (2012, 2013, 2016, 2020)</li>
+                        <li>4× NBA Finals MVP</li>
+                        <li>4× NBA Most Valuable Player (2009, 2010, 2012, 2013)</li>
+                        <li>19× NBA All-Star (2005-2023)</li>
+                        <li>NBA scoring champion (2008)</li>
+                        <li>NBA assists leader (2020)</li>
+                        <li>2× Olympic gold medalist (2008, 2012)</li>
+                        <li>NBA Rookie of the Year (2004)</li>
+                        <li>NBA's all-time leading scorer (38,652+ points)</li>
+                        <li>Only player with 30,000+ points, 10,000+ rebounds, 10,000+ assists</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5>Sports Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Team Sports</a></li>
+                        <li><a href="index.html">Individual Sports</a></li>
+                        <li><a href="basketball.html">Basketball</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Basketball Leagues</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">NBA</a></li>
+                        <li><a href="#">FIBA</a></li>
+                        <li><a href="#">EuroLeague</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="contact-us.html">SportsInfo HQ</a></li>
+                        <li><a href="mailto:info@sportsinfo.com">info@sportsinfo.com</a></li>
+                        <li><a href="tel:+1-234-567-890">+1-234-567-890</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Follow Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 SportsInfo Pro | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- MINIMAL JAVASCRIPT -->
+    <script>
+        // Simple Modal Functions
+        function showPlayerModal(playerId) {
+            // Hide all modals first
+            closeAllModals();
+            
+            // Show the selected player modal
+            const modal = document.getElementById('modal-' + playerId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeAllModals() {
+            // Get all modals
+            const modals = document.querySelectorAll('.modal-overlay');
+            
+            // Hide each modal
+            modals.forEach(function(modal) {
+                modal.style.display = 'none';
+            });
+            
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeAllModals();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+    </script>
+</body>
+</html>

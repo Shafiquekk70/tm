@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athletics | SportsInfo Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========== BASIC STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #05070a;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+        
+        /* ========== NAVIGATION ========== */
+        .main-nav {
+            background: rgba(5, 7, 10, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-highlight {
+            color: #ffcc00;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #ffcc00;
+        }
+        
+        .nav-link.active {
+            color: #ffcc00;
+        }
+        
+        /* ========== MAIN CONTAINER ========== */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto 50px;
+        }
+        
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffcc00, #f8efba);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 204, 0, 0.1);
+            color: #ffcc00;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 204, 0, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #ffcc00;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            color: #ffcc00;
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        
+        /* ========== CONTENT CARDS ========== */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .content-card:hover {
+            border-color: #ffcc00;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.2);
+        }
+        
+        .section-title {
+            color: #ffcc00;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 204, 0, 0.3);
+        }
+        
+        /* ========== TWO COLUMN LAYOUT ========== */
+        .two-column {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        /* ========== FEATURE BOX ========== */
+        .feature-box {
+            background: rgba(255, 204, 0, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffcc00;
+        }
+        
+        .feature-title {
+            color: #ffcc00;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* ========== FACT BOX ========== */
+        .fact-box {
+            background: linear-gradient(135deg, rgba(255,204,0,0.1), rgba(0,123,255,0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+        
+        /* ========== ATHLETE GALLERY ========== */
+        .athlete-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .athlete-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .athlete-card:hover {
+            border-color: #ffcc00;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 204, 0, 0.3);
+        }
+        
+        .athlete-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .athlete-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .athlete-name {
+            color: #ffcc00;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .athlete-country {
+            color: #aaaaaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .athlete-event {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        /* ========== STATISTICS TABLE ========== */
+        .stats-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .stats-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-collapse: collapse;
+        }
+        
+        .stats-table th {
+            background: rgba(255, 204, 0, 0.2);
+            color: #ffcc00;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stats-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .stats-table tr:hover {
+            background: rgba(255, 204, 0, 0.05);
+        }
+        
+        /* ========== COUNTRIES GRID ========== */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .country-item {
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .country-item:hover {
+            background: rgba(255, 204, 0, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* ========== INFO ITEMS ========== */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 10px;
+            margin-right: 15px;
+            color: #ffcc00;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            color: #ffcc00;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-container {
+            width: 90%;
+            max-width: 800px;
+            background: #05070a;
+            border: 2px solid #ffcc00;
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+        }
+        
+        .modal-title {
+            color: #ffcc00;
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ffcc00;
+        }
+        
+        /* ========== FOOTER ========== */
+        .main-footer {
+            background-color: #05070a;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h5 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffcc00;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .two-column {
+                flex-direction: column;
+            }
+            
+            .modal-row {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                width: 100%;
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                padding: 20px;
+            }
+            
+            .athlete-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .countries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                SPORTS<span class="logo-highlight">INFO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                <li><a href="contact-us.html" class="nav-link">Contact</a></li>
+                <li><a href="athletics.html" class="nav-link active">Athletics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">ATHLETICS</h1>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="https://images.unsplash.com/photo-1552674605-db6ffd8facb5?w=1200" alt="Athletics Track" class="hero-image">
+            <h2 class="hero-title">THE MOTHER OF ALL SPORTS</h2>
+            <p class="hero-description">
+                Athletics is one of the oldest and most fundamental sports that challenges human physical capabilities through running, jumping, and throwing events.
+            </p>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="content-card">
+            <h2 class="section-title">BASIC INFORMATION</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Number of Players</h4>
+                            <p>Athletics is primarily an individual sport. Each event features one athlete competing at a time, but major tournaments involve hundreds of athletes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-people-group"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Team Game?</h4>
+                            <p>Primarily individual, but some events like relay races involve teamwork. International competitions also feature team scoring systems.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Main Strategy</h4>
+                            <p>Pacing, energy conservation, technique optimization, and mental focus. Each event requires specific strategic approaches.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Competition Format</h4>
+                            <p>Heats, semifinals, and finals system. Field events have qualifying rounds followed by finals with multiple attempts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <!-- Left Column - Game Strategy -->
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">GAME STRATEGY</h2>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-running"></i> Running Events
+                        </h3>
+                        <ul>
+                            <li><strong>Pacing:</strong> Even distribution of speed versus negative/positive splits</li>
+                            <li><strong>Lane Selection:</strong> Inner lanes for shorter races, outer for longer</li>
+                            <li><strong>Final Kick:</strong> Timing the acceleration at the finish</li>
+                            <li><strong>Overtaking:</strong> Strategic positioning during races</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-long-arrow-alt-up"></i> Jumping Events
+                        </h3>
+                        <ul>
+                            <li><strong>Approach Run:</strong> Building optimal speed for takeoff</li>
+                            <li><strong>Takeoff Angle:</strong> 20-25° for long jump, 45° for high jump</li>
+                            <li><strong>In-Air Technique:</strong> Fosbury flop, hitch-kick, etc.</li>
+                            <li><strong>Landing:</strong> Maximizing distance without fault</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-baseball-ball"></i> Throwing Events
+                        </h3>
+                        <ul>
+                            <li><strong>Momentum Building:</strong> Glide, spin, or rotational techniques</li>
+                            <li><strong>Release Angle:</strong> 34-45° depending on implement</li>
+                            <li><strong>Follow-through:</strong> Maintaining balance after release</li>
+                            <li><strong>Grip:</strong> Proper hold for maximum control</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Rules -->
+            <div class="column">
+                <div class="content-card">
+                    <h2 class="section-title">RULES OF THE GAME</h2>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-flag"></i> General Rules
+                        </h3>
+                        <ul>
+                            <li>False starts result in disqualification (1 false start rule)</li>
+                            <li>Lane discipline must be maintained in track events</li>
+                            <li>Implements must land within sector lines in throwing events</li>
+                            <li>Jumpers must take off from behind the board/foul line</li>
+                            <li>Relay baton must be passed within the exchange zone</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-ruler"></i> Measurement Rules
+                        </h3>
+                        <ul>
+                            <li>All measurements taken to nearest centimeter below</li>
+                            <li>Wind assistance limit: +2.0 m/s for records</li>
+                            <li>Three attempts in field events, top 8 get 3 more</li>
+                            <li>Starting blocks mandatory for races up to 400m</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-trophy"></i> Competition Rules
+                        </h3>
+                        <ul>
+                            <li>Heats and finals system for track events</li>
+                            <li>Qualifying standards for major championships</li>
+                            <li>Anti-doping regulations strictly enforced</li>
+                            <li>Uniform rules: National/team colors, bib numbers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important Facts -->
+        <div class="content-card">
+            <h2 class="section-title">IMPORTANT FACTS</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-history"></i> History & Origin
+                        </h3>
+                        <ul>
+                            <li><strong>First Recorded:</strong> Ancient Olympic Games, 776 BC</li>
+                            <li><strong>Modern Athletics:</strong> Started in 19th century England</li>
+                            <li><strong>First Modern Olympics:</strong> Athens 1896</li>
+                            <li><strong>IAAF Founded:</strong> 1912 (now World Athletics)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="fact-box">
+                        <h3 class="feature-title">
+                            <i class="fas fa-globe"></i> Major Tournaments
+                        </h3>
+                        <ul>
+                            <li><strong>Olympic Games:</strong> Every 4 years</li>
+                            <li><strong>World Athletics Championships:</strong> Biennial</li>
+                            <li><strong>World Indoor Championships:</strong> Every 2 years</li>
+                            <li><strong>Diamond League:</strong> Annual series of 14 meets</li>
+                            <li><strong>World Cross Country Championships:</strong> Annual</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- World Records -->
+        <div class="content-card">
+            <h2 class="section-title">WORLD RECORDS & STATISTICS</h2>
+            
+            <div class="stats-container">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Record</th>
+                            <th>Athlete</th>
+                            <th>Country</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100m (Men)</td>
+                            <td>9.58 seconds</td>
+                            <td>Usain Bolt</td>
+                            <td>Jamaica</td>
+                            <td>16 Aug 2009</td>
+                        </tr>
+                        <tr>
+                            <td>100m (Women)</td>
+                            <td>10.49 seconds</td>
+                            <td>Florence Griffith-Joyner</td>
+                            <td>USA</td>
+                            <td>16 Jul 1988</td>
+                        </tr>
+                        <tr>
+                            <td>Long Jump (Men)</td>
+                            <td>8.95m</td>
+                            <td>Mike Powell</td>
+                            <td>USA</td>
+                            <td>30 Aug 1991</td>
+                        </tr>
+                        <tr>
+                            <td>High Jump (Women)</td>
+                            <td>2.09m</td>
+                            <td>Stefka Kostadinova</td>
+                            <td>Bulgaria</td>
+                            <td>30 Aug 1987</td>
+                        </tr>
+                        <tr>
+                            <td>Javelin Throw (Men)</td>
+                            <td>98.48m</td>
+                            <td>Jan Železný</td>
+                            <td>Czech Republic</td>
+                            <td>25 May 1996</td>
+                        </tr>
+                        <tr>
+                            <td>Marathon (Men)</td>
+                            <td>2:01:09</td>
+                            <td>Eliud Kipchoge</td>
+                            <td>Kenya</td>
+                            <td>16 Sep 2018</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Famous Athletes -->
+        <div class="content-card">
+            <h2 class="section-title">FAMOUS ATHLETES</h2>
+            <p>Click on any athlete to view detailed information</p>
+            
+            <div class="athlete-gallery">
+                <!-- Athlete 1 -->
+                <div class="athlete-card" onclick="openAthleteModal('usain-bolt')">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500" alt="Usain Bolt" class="athlete-image">
+                    <div class="athlete-info">
+                        <div class="athlete-name">Usain Bolt</div>
+                        <div class="athlete-country">Jamaica</div>
+                        <div class="athlete-event">100m, 200m, 4x100m</div>
+                    </div>
+                </div>
+                
+                <!-- Athlete 2 -->
+                <div class="athlete-card" onclick="openAthleteModal('shelly-ann')">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500" alt="Shelly-Ann Fraser-Pryce" class="athlete-image">
+                    <div class="athlete-info">
+                        <div class="athlete-name">Shelly-Ann Fraser-Pryce</div>
+                        <div class="athlete-country">Jamaica</div>
+                        <div class="athlete-event">100m, 200m</div>
+                    </div>
+                </div>
+                
+                <!-- Athlete 3 -->
+                <div class="athlete-card" onclick="openAthleteModal('kipchoge')">
+                    <img src="https://images.unsplash.com/photo-1519861531473-920034658307?w=500" alt="Eliud Kipchoge" class="athlete-image">
+                    <div class="athlete-info">
+                        <div class="athlete-name">Eliud Kipchoge</div>
+                        <div class="athlete-country">Kenya</div>
+                        <div class="athlete-event">Marathon</div>
+                    </div>
+                </div>
+                
+                <!-- Athlete 4 -->
+                <div class="athlete-card" onclick="openAthleteModal('felix')">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500" alt="Allyson Felix" class="athlete-image">
+                    <div class="athlete-info">
+                        <div class="athlete-name">Allyson Felix</div>
+                        <div class="athlete-country">USA</div>
+                        <div class="athlete-event">200m, 400m</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countries Section -->
+        <div class="content-card">
+            <h2 class="section-title">COUNTRIES THAT PLAY ATHLETICS</h2>
+            <p>Athletics is a truly global sport practiced in over 200 countries worldwide. Top nations include:</p>
+            
+            <div class="countries-grid">
+                <div class="country-item">United States</div>
+                <div class="country-item">Jamaica</div>
+                <div class="country-item">Kenya</div>
+                <div class="country-item">Ethiopia</div>
+                <div class="country-item">Great Britain</div>
+                <div class="country-item">Germany</div>
+                <div class="country-item">Russia</div>
+                <div class="country-item">China</div>
+                <div class="country-item">Japan</div>
+                <div class="country-item">Australia</div>
+                <div class="country-item">Canada</div>
+                <div class="country-item">France</div>
+                <div class="country-item">Italy</div>
+                <div class="country-item">South Africa</div>
+                <div class="country-item">Brazil</div>
+                <div class="country-item">India</div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="color: #ffcc00; margin-bottom: 15px;">Regional Dominance</h3>
+                <p><strong>East Africa:</strong> Dominates long-distance running</p>
+                <p><strong>West Africa/Caribbean:</strong> Dominates sprints</p>
+                <p><strong>Europe/North America:</strong> Strong in field events and combined events</p>
+                <p><strong>Asia:</strong> Growing presence in jumps and throws</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Athlete Modals -->
+    <!-- Modal 1: Usain Bolt -->
+    <div id="modal-usain-bolt" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">USAIN BOLT</h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500" alt="Usain Bolt" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #ffcc00; margin-bottom: 15px;">The Fastest Man Alive</h3>
+                        <p><strong>Nationality:</strong> Jamaican</p>
+                        <p><strong>Born:</strong> August 21, 1986</p>
+                        <p><strong>Height:</strong> 1.95m (6'5")</p>
+                        <p><strong>Weight:</strong> 94kg (207 lbs)</p>
+                        <p><strong>Events:</strong> 100m, 200m, 4×100m relay</p>
+                        <p><strong>World Records:</strong> 100m (9.58s), 200m (19.19s)</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #ffcc00; margin-bottom: 10px;">Career Highlights</h4>
+                    <ul>
+                        <li>Only sprinter to win Olympic 100m & 200m titles at three consecutive Olympics</li>
+                        <li>First man to win six Olympic gold medals in sprinting</li>
+                        <li>Holds the world record in 100m, 200m and 4×100m relay</li>
+                        <li>Named World Athlete of the Year 6 times</li>
+                        <li>Considered the greatest sprinter of all time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Shelly-Ann Fraser-Pryce -->
+    <div id="modal-shelly-ann" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">SHELLY-ANN FRASER-PRYCE</h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500" alt="Shelly-Ann Fraser-Pryce" class="modal-image">
+                    <div style="flex: 1;">
+                        <h3 style="color: #ffcc00; margin-bottom: 15px;">Pocket Rocket</h3>
+                        <p><strong>Nationality:</strong> Jamaican</p>
+                        <p><strong>Born:</strong> December 27, 1986</p>
+                        <p><strong>Height:</strong> 1.52m (5'0")</p>
+                        <p><strong>Weight:</strong> 52kg (115 lbs)</p>
+                        <p><strong>Events:</strong> 100m, 200m</p>
+                        <p><strong>Personal Best:</strong> 100m (10.60s), 200m (21.79s)</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #ffcc00; margin-bottom: 10px;">Career Highlights</h4>
+                    <ul>
+                        <li>First female sprinter to win five World Championships 100m titles</li>
+                        <li>Oldest woman to win World Championships 100m title (2022 at age 35)</li>
+                        <li>Only female sprinter to win 100m gold at World Championships after having a child</li>
+                        <li>Third fastest woman in history over 100m</li>
+                        <li>Named World Female Athlete of the Year 3 times</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5>Sports Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Team Sports</a></li>
+                        <li><a href="index.html">Individual Sports</a></li>
+                        <li><a href="index.html">Athletics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Live Scores</a></li>
+                        <li><a href="index.html">Upcoming Events</a></li>
+                        <li><a href="index.html">Player Stats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="contact-us.html">SportsInfo HQ</a></li>
+                        <li><a href="mailto:info@sportsinfo.com">info@sportsinfo.com</a></li>
+                        <li><a href="tel:+1-234-567-890">+1-234-567-890</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Follow Us</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 SportsInfo Pro | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal Functions
+        function openAthleteModal(athleteId) {
+            // Hide all modals first
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            
+            // Show the selected modal
+            const modal = document.getElementById('modal-' + athleteId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeModal() {
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Mobile menu toggle (if needed)
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

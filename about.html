@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | SportsInfo Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ===== RESET & BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  background:#05070a;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* ===== BACKGROUND EFFECTS ===== */
+body::before,body::after{
+  content:"";
+  position:fixed;
+  width:500px;height:500px;
+  filter:blur(140px);
+  z-index:-2;
+  opacity:0.7;
+}
+body::before{
+  background:linear-gradient(45deg, #007bff, #00bfff);
+  top:-150px;left:-150px;
+  animation:float 20s infinite alternate;
+}
+body::after{
+  background:linear-gradient(45deg, #ffcc00, #ff9900);
+  bottom:-150px;right:-150px;
+  animation:float 25s infinite alternate-reverse;
+}
+
+@keyframes float{
+  0%{transform:translate(0,0) rotate(0deg);}
+  100%{transform:translate(50px,50px) rotate(180deg);}
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:sticky;
+  top:0;
+  background:rgba(5,7,10,0.95);
+  backdrop-filter:blur(15px);
+  border-bottom:2px solid rgba(255,204,0,0.3);
+  z-index:1000;
+  padding:15px 0;
+  box-shadow:0 5px 30px rgba(0,0,0,0.3);
+}
+
+.nav-inner{
+  max-width:1300px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 30px;
+}
+
+.logo{
+  font-family:'Oswald';
+  font-size:2.2rem;
+  font-weight:700;
+  letter-spacing:1px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo i{
+  color:#ffcc00;
+  font-size:1.8rem;
+}
+
+.logo span{
+  color:#ffcc00;
+  text-shadow:0 0 15px rgba(255,204,0,0.5);
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  text-transform:uppercase;
+  font-size:0.95rem;
+  letter-spacing:0.5px;
+  padding:8px 20px;
+  border-radius:30px;
+  transition:all 0.3s ease;
+  position:relative;
+}
+
+.nav-links a:not(.active):hover{
+  color:#ffcc00;
+  background:rgba(255,204,0,0.1);
+  transform:translateY(-2px);
+}
+
+.nav-links .active{
+  color:#000;
+  background:#ffcc00;
+  box-shadow:0 5px 20px rgba(255,204,0,0.4);
+}
+
+.nav-links .active:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px rgba(255,204,0,0.6);
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1300px;
+  margin:0 auto;
+  padding:80px 30px;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title{
+  font-family:'Oswald';
+  font-size:4.5rem;
+  text-align:center;
+  margin-bottom:30px;
+  background:linear-gradient(45deg, #ffcc00, #fff2b0, #ffcc00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 5px 25px rgba(255,204,0,0.3);
+  letter-spacing:1px;
+  position:relative;
+  padding-bottom:20px;
+}
+
+.page-title::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+  height:4px;
+  background:linear-gradient(to right, transparent, #ffcc00, transparent);
+  border-radius:2px;
+}
+
+.page-subtitle{
+  text-align:center;
+  font-size:1.3rem;
+  color:#ccc;
+  max-width:700px;
+  margin:0 auto 60px;
+  line-height:1.6;
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,204,0,0.25);
+  border-radius:25px;
+  padding:60px;
+  margin-bottom:80px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.section:hover{
+  border-color:rgba(255,204,0,0.4);
+  box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  transform:translateY(-5px);
+}
+
+.section::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5px;
+  background:linear-gradient(to right, #007bff, #ffcc00);
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title{
+  font-family:'Oswald';
+  color:#ffcc00;
+  font-size:2.5rem;
+  margin-bottom:35px;
+  position:relative;
+  padding-bottom:15px;
+  display:inline-block;
+}
+
+.section-title::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:80px;
+  height:4px;
+  background:#ffcc00;
+  border-radius:2px;
+}
+
+/* ===== GRID LAYOUT ===== */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+@media(max-width:1100px){
+  .grid-2{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+}
+
+/* ===== IMAGES ===== */
+.section-img{
+  width:100%;
+  border-radius:20px;
+  border:3px solid #ffcc00;
+  box-shadow:0 15px 35px rgba(0,0,0,0.3);
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.section-img:hover{
+  transform:scale(1.02);
+  box-shadow:0 20px 45px rgba(0,0,0,0.4);
+}
+
+.section-img::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(45deg, rgba(255,204,0,0.1), transparent);
+  z-index:1;
+}
+
+/* ===== MISSION CARDS ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:35px;
+  margin-top:40px;
+}
+
+.card{
+  background:rgba(255,204,0,0.08);
+  border:2px solid rgba(255,204,0,0.3);
+  border-radius:25px;
+  padding:40px 35px;
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-15px);
+  border-color:#ffcc00;
+  background:rgba(255,204,0,0.12);
+  box-shadow:0 20px 40px rgba(255,204,0,0.2);
+}
+
+.card i{
+  font-size:2.5rem;
+  color:#ffcc00;
+  margin-bottom:25px;
+}
+
+.card h3{
+  font-family:'Oswald';
+  font-size:1.8rem;
+  margin-bottom:15px;
+  color:#fff;
+}
+
+.card p{
+  color:#ccc;
+  font-size:1.05rem;
+  line-height:1.7;
+}
+
+/* ===== STATS SECTION ===== */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:40px;
+  text-align:center;
+  margin-top:40px;
+}
+
+.stat-item{
+  padding:30px 20px;
+  background:rgba(255,255,255,0.03);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:all 0.3s ease;
+}
+
+.stat-item:hover{
+  border-color:#ffcc00;
+  transform:translateY(-10px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.stat-item i{
+  font-size:2.5rem;
+  color:#ffcc00;
+  margin-bottom:20px;
+}
+
+.stat-item h3{
+  font-family:'Oswald';
+  font-size:3.5rem;
+  color:#ffcc00;
+  margin-bottom:10px;
+  text-shadow:0 0 15px rgba(255,204,0,0.3);
+}
+
+.stat-item p{
+  color:#bbb;
+  text-transform:uppercase;
+  font-size:0.95rem;
+  letter-spacing:1px;
+  font-weight:600;
+}
+
+/* ===== TEAM SECTION ===== */
+.team{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:35px;
+  margin-top:40px;
+}
+
+.team-card{
+  background:rgba(255,255,255,0.04);
+  border:2px solid rgba(255,255,255,0.1);
+  border-radius:25px;
+  padding:35px;
+  text-align:center;
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.team-card:hover{
+  border-color:#ffcc00;
+  transform:translateY(-15px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+.team-img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #ffcc00;
+  margin:0 auto 25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  transition:all 0.3s ease;
+}
+
+.team-card:hover .team-img{
+  transform:scale(1.1);
+  box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+.team-card h4{
+  font-family:'Oswald';
+  font-size:1.5rem;
+  margin-bottom:8px;
+  color:#fff;
+}
+
+.team-card p{
+  color:#ffcc00;
+  font-weight:600;
+  margin-bottom:20px;
+  font-size:1.1rem;
+}
+
+.team-social{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.team-social a{
+  width:40px;
+  height:40px;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-decoration:none;
+  transition:all 0.3s ease;
+}
+
+.team-social a:hover{
+  background:#ffcc00;
+  color:#000;
+  transform:translateY(-5px);
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  border-left:3px solid #ffcc00;
+  padding-left:40px;
+  margin-left:20px;
+  margin-top:40px;
+}
+
+.timeline-item{
+  margin-bottom:35px;
+  position:relative;
+  padding:25px 30px;
+  background:rgba(255,255,255,0.03);
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:all 0.3s ease;
+}
+
+.timeline-item:hover{
+  border-color:#ffcc00;
+  transform:translateX(10px);
+  background:rgba(255,204,0,0.05);
+}
+
+.timeline-item::before{
+  content:'';
+  width:18px;
+  height:18px;
+  background:#ffcc00;
+  border-radius:50%;
+  position:absolute;
+  left:-50px;
+  top:50%;
+  transform:translateY(-50%);
+  box-shadow:0 0 20px rgba(255,204,0,0.8);
+}
+
+.timeline-year{
+  color:#ffcc00;
+  font-weight:700;
+  font-size:1.2rem;
+  margin-bottom:8px;
+  display:block;
+}
+
+.timeline-text{
+  color:#ccc;
+  font-size:1.1rem;
+}
+
+/* ===== CTA SECTION ===== */
+.cta{
+  text-align:center;
+  padding:80px 60px !important;
+  background:linear-gradient(135deg, rgba(255,204,0,0.1), rgba(0,123,255,0.1));
+  border-color:#ffcc00;
+}
+
+.cta .section-title{
+  margin-bottom:25px;
+}
+
+.cta p{
+  font-size:1.2rem;
+  color:#ccc;
+  max-width:600px;
+  margin:0 auto 40px;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(45deg, #ffcc00, #ffdd44);
+  color:#000;
+  padding:18px 50px;
+  border-radius:50px;
+  font-weight:800;
+  text-decoration:none;
+  font-size:1.2rem;
+  letter-spacing:0.5px;
+  transition:all 0.3s ease;
+  box-shadow:0 10px 30px rgba(255,204,0,0.3);
+  border:none;
+  cursor:pointer;
+  font-family:'Poppins', sans-serif;
+  text-transform:uppercase;
+}
+
+.cta-btn:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 40px rgba(255,204,0,0.5);
+  background:linear-gradient(45deg, #ffdd44, #ffee88);
+}
+
+.cta-btn i{
+  margin-left:10px;
+  transition:transform 0.3s ease;
+}
+
+.cta-btn:hover i{
+  transform:translateX(5px);
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding:40px;
+  text-align:center;
+  font-size:0.95rem;
+  color:#aaa;
+  background:rgba(5,7,10,0.9);
+  margin-top:60px;
+}
+
+.footer p{
+  margin-bottom:10px;
+}
+
+.footer-links{
+  margin-top:20px;
+}
+
+.footer-links a{
+  color:#ffcc00;
+  text-decoration:none;
+  margin:0 15px;
+  transition:all 0.3s ease;
+}
+
+.footer-links a:hover{
+  color:#fff;
+  text-decoration:underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .container{padding:50px 20px;}
+  .page-title{font-size:3rem;}
+  .section{padding:40px 25px;}
+  .section-title{font-size:2rem;}
+  .nav-inner{flex-direction:column;gap:20px;}
+  .nav-links{gap:15px;flex-wrap:wrap;justify-content:center;}
+  .cta{padding:50px 30px !important;}
+  .grid-2{gap:30px;}
+}
+
+@media(max-width:480px){
+  .page-title{font-size:2.5rem;}
+  .section{padding:30px 20px;}
+  .cards,.team,.stats{grid-template-columns:1fr;}
+  .timeline{padding-left:30px;margin-left:10px;}
+  .timeline-item::before{left:-40px;}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="logo">
+      <i class="fas fa-futbol"></i>
+      SPORTS<span>INFO</span> PRO
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="guestbook.html">Guestbook</a>
+      <a class="active" href="#">About</a>
+      <a href="contact-us.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title">OUR STORY</h1>
+  <p class="page-subtitle">From a passionate idea in 2016 to becoming the world's leading sports intelligence platform, discover the journey of SportsInfo Pro</p>
+
+  <section class="section grid-2">
+    <div>
+      <h2 class="section-title">WHO WE ARE</h2>
+      <p class="lead" style="font-size:1.3rem;margin-bottom:25px;color:#ffcc00;">SportsInfo Pro is a global sports intelligence platform founded in 2016 with a mission to revolutionize how fans interact with sports data.</p>
+      <p>We deliver real-time scores, in-depth analytics, player insights, and historical data across 50+ sports, from football and cricket to basketball and tennis.</p>
+      <p>Our platform is trusted by millions of passionate fans, professional analysts, and sports organizations in more than 150 countries worldwide.</p>
+      <p>We combine cutting-edge technology with deep sports expertise to provide the most accurate, comprehensive, and engaging sports information experience available anywhere.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&h=600&fit=crop" class="section-img" alt="Sports Stadium">
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">OUR CORE PRINCIPLES</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-bullseye"></i>
+        <h3>OUR MISSION</h3>
+        <p>Democratizing sports data worldwide by making real-time statistics, analytics, and insights accessible to every fan, analyst, and organization regardless of location or resources.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-eye"></i>
+        <h3>OUR VISION</h3>
+        <p>Connecting the global sports community through intelligent data solutions that enhance understanding, engagement, and appreciation for sports at every level.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-heart"></i>
+        <h3>OUR VALUES</h3>
+        <p>Accuracy in every data point, innovation in technology, passion for sports, integrity in reporting, and commitment to our global community of users.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">BY THE NUMBERS</h2>
+    <div class="stats">
+      <div class="stat-item">
+        <i class="fas fa-users"></i>
+        <h3>10M+</h3>
+        <p>Active Users</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-globe"></i>
+        <h3>150+</h3>
+        <p>Countries Served</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-basketball-ball"></i>
+        <h3>50+</h3>
+        <p>Sports Covered</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-bolt"></i>
+        <h3>24/7</h3>
+        <p>Live Updates</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">MEET OUR LEADERSHIP</h2>
+    <div class="team">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" class="team-img" alt="Rajesh Kumar">
+        <h4>RAJESH KUMAR</h4>
+        <p>Founder & CEO</p>
+        <p style="color:#ccc;font-size:0.95rem;font-weight:normal;">Former professional cricket analyst with 15+ years in sports data</p>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop" class="team-img" alt="Priya Sharma">
+        <h4>PRIYA SHARMA</h4>
+        <p>Chief Technology Officer</p>
+        <p style="color:#ccc;font-size:0.95rem;font-weight:normal;">AI and big data specialist from Stanford University</p>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" class="team-img" alt="Amit Patel">
+        <h4>AMIT PATEL</h4>
+        <p>Editor-in-Chief</p>
+        <p style="color:#ccc;font-size:0.95rem;font-weight:normal;">Award-winning sports journalist with 20+ years experience</p>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop" class="team-img" alt="Neha Gupta">
+        <h4>NEHA GUPTA</h4>
+        <p>Head of Analytics</p>
+        <p style="color:#ccc;font-size:0.95rem;font-weight:normal;">Former data scientist at ESPN and sports analytics pioneer</p>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">OUR JOURNEY</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-year">2016</span>
+        <span class="timeline-text">Company founded with a vision to transform sports data accessibility</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2018</span>
+        <span class="timeline-text">Launched real-time scores and live updates for 10 major sports</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <span class="timeline-text">Expanded to 50+ countries with localized content and multilingual support</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2023</span>
+        <span class="timeline-text">Introduced AI-powered predictive analytics and player performance insights</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2025</span>
+        <span class="timeline-text">Launched SportsInfo Pro Ultimate Edition with advanced visualization tools</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <h2 class="section-title">READY TO JOIN THE REVOLUTION?</h2>
+    <p>Whether you're a casual fan or a hardcore analyst, SportsInfo Pro has the tools and insights you need.</p>
+    <a href="contact-us.html" class="cta-btn">GET IN TOUCH <i class="fas fa-arrow-right"></i></a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 SportsInfo Pro | All Rights Reserved</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Careers</a>
+    <a href="#">Media Kit</a>
+  </div>
+</footer>
+
+</body>
+</html>

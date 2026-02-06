@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsInfo Pro | Ultimate Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Dark Theme & Mesh Background --- */
+        body {
+            background-color: #05070a;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Glowing Blobs Effect */
+        body::before {
+            content: ""; position: absolute; top: 0%; left: -10%;
+            width: 500px; height: 500px; background: rgba(0, 123, 255, 0.15);
+            filter: blur(120px); z-index: -1;
+        }
+        body::after {
+            content: ""; position: absolute; bottom: 0%; right: -10%;
+            width: 500px; height: 500px; background: rgba(255, 204, 0, 0.1);
+            filter: blur(120px); z-index: -1;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background: rgba(5, 7, 10, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar-brand { font-family: 'Oswald'; font-size: 1.8rem; font-weight: bold; }
+        .navbar-brand span { color: #ffcc00; }
+        .nav-link { color: #fff !important; text-transform: uppercase; font-weight: 600; margin-left: 15px; }
+        .nav-link:hover { color: #ffcc00 !important; }
+
+        /* --- Slider --- */
+        .slider-container {
+            border: 2px solid #ffcc00;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.2);
+            margin-top: 30px;
+        }
+        .carousel-item img { height: 480px; object-fit: cover; filter: brightness(0.5); }
+        /* Slider image par dark layer */
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+/* Taaki text overlay ke upar rahe */
+.carousel-caption {
+    z-index: 2;
+}
+.card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    padding-top: 60px; /* Space for smooth transition */
+}
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 204, 0, 0.5);
+            border-radius: 20px;
+            padding: 25px;
+            bottom: 15%;
+            max-width: 450px;
+        }
+        .carousel-caption h3 { font-family: 'Oswald'; color: #ffcc00; }
+
+        /* --- Search Box --- */
+        .search-box {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 204, 0, 0.3);
+            border-radius: 50px;
+            display: flex;
+            padding: 8px;
+            max-width: 600px;
+            margin: 50px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .search-box input { background: transparent; border: none; color: white; padding: 10px 25px; flex-grow: 1; outline: none; }
+        .search-box button { background: #ffcc00; border: none; border-radius: 50px; padding: 10px 30px; font-weight: 800; color: #000; }
+
+        /* --- 12 Sports Cards --- */
+        .sport-card {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            height: 300px;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        
+        }
+        /* Premium Card Upgrade */
+.sport-card {
+    background: rgba(255, 255, 255, 0.03); /* Glass base */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Title Gradient */
+.section-title {
+    font-size: 4rem !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #ffcc00, #f8efba);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+
+/* Button Glow */
+.btn-details {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+}
+
+.btn-details:hover {
+    background: #fff !important;
+    box-shadow: 0 4px 25px rgba(255, 204, 0, 0.6);
+    transform: scale(1.05);
+}
+        .sport-card:hover {
+            transform: translateY(-15px);
+            border-color: #ffcc00;
+            box-shadow: 0 0 100px rgba(255, 204, 0, 0.3);
+        }
+        .sport-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .sport-card:hover img { transform: scale(1.15); }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            padding: 20px;
+            text-align: center;
+        }
+        .card-overlay h3 { font-family: 'Oswald'; font-size: 1.6rem; margin: 0; color: #fff; text-transform: uppercase; }
+        .card-overlay p { font-size: 0.8rem; color: #bbb; margin: 5px 0 10px; line-height: 1.3; }
+        .btn-details {
+            background: #ffcc00; color: #000; font-size: 0.7rem; font-weight: 800;
+            padding: 5px 15px; border: none; border-radius: 5px; text-transform: uppercase;
+        }
+        .section-title { font-family: 'Oswald'; font-size: 3rem; letter-spacing: 2px; }
+        /* Footer Styles */.footer {
+    width: 99%;
+    background-color: #05070a; /* same as body */
+    color: white;
+    padding: 40px 20px 20px 20px;
+    margin-top: auto;
+    border-radius: 15px;
+}
+
+footer.footer h5 {
+    color: #ffcc00;
+    margin-bottom: 15px;
+    font-family: 'Oswald', sans-serif;
+}
+
+footer.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer.footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+footer.footer ul li a:hover {
+    color: #ffcc00;
+}
+
+footer.footer .footer-bottom {
+    padding: 15px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">SPORTS<span>INFO</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="guest.html">guestbook</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">about us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="slider-container">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>LATEST HIGHLIGHTS</h3>
+                            <p>Catch the most intense moments of the season in high definition.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200" class="d-block w-100">
+                        <div class="carousel-caption">
+                            <h3>CRICKET FEVER</h3>
+                            <p>The spirit of cricket like never before. Track every run and wicket.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search for sports, teams or players...">
+            <button>GO</button>
+        </div>
+
+        <h2 class="text-center mb-5 section-title">GAME ON hai </h2>
+        <div class="row g-4 mb-5">
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=500">
+                    <div class="card-overlay">
+                        <h3>BOXING</h3>
+                        <p>Experience the ultimate power in the ring.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=500">
+                    <div class="card-overlay">
+                        <h3>SWIMMING</h3>
+                        <p>Speed and endurance under the blue water.</p>
+                      <a href="swming.html">  <button class="btn-details">Details</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1595435934247-5d33b7f92c60?w=500">
+                    <div class="card-overlay">
+                        <h3>TENNIS</h3>
+                        <p>Mastering the court with precision and speed.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500">
+                    <div class="card-overlay">
+                        <h3>CRICKET</h3>
+                        <p>The heart and soul of millions around the globe.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500">
+                    <div class="card-overlay">
+                        <h3>FOOTBALL</h3>
+                        <p>Celebrating the magic of the world's favorite sport.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500">
+                    <div class="card-overlay">
+                        <h3>BASKETBALL</h3>
+                        <p>High fly dunks and fast-paced court action.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=500">
+                    <div class="card-overlay">
+                        <h3>FORMULA 1</h3>
+                        <p>Unrivaled speed and engineering on the track.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=500">
+                    <div class="card-overlay">
+                        <h3>GOLF</h3>
+                        <p>Focus and elegance on the grand green course.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=500">
+                    <div class="card-overlay">
+                        <h3>RUGBY</h3>
+                        <p>Toughness and teamwork in every heavy hit.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1541625602330-2277a4c4bb98?w=500">
+                    <div class="card-overlay">
+                        <h3>CYCLING</h3>
+                        <p>Pushing human limits on the open roads.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?w=500">
+                    <div class="card-overlay">
+                        <h3>BASEBALL</h3>
+                        <p>Classic strategy and power at the home plate.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="sport-card">
+                    <img src="https://images.unsplash.com/photo-1580748141549-71748ddf0bd0?w=500">
+                    <div class="card-overlay">
+                        <h3>HOCKEY</h3>
+                        <p>Fast skating and intense goals on the cold ice.</p>
+                        <button class="btn-details">Details</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<br>
+<!-- Main content -->
+<div class="container">
+  ... saara content ...
+</div>
+
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-top">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <h5>Sports Categories</h5>
+        <ul>
+          <li><a href="#">Team Sports</a></li>
+          <li><a href="#">Individual Sports</a></li>
+          <li><a href="#">Extreme Sports</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Live Scores</a></li>
+          <li><a href="#">Upcoming Events</a></li>
+          <li><a href="#">Player Stats</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Contact Us</h5>
+        <ul>
+          <li><a href="#">SportsInfo </a></li>
+          <li><a href="#">Email:kkshafique352@gmail.com</a></li>
+          <li><a href="#">Phone: +923194966094</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Follow Us</h5>
+        <ul>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom text-center">
+    © 2026 SportsInfo Pro | All Rights Reserved
+  </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
